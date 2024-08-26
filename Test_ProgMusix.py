@@ -39,14 +39,14 @@ class TestProgmusix:
         assert self.page.enter_password_again().is_displayed()
         assert self.page.disabled_submit_btn() == 'true'
 
-#     def test_reg_negative(self):
-#         self.page.reg_negative_method()
-#         #Helytelen formátumra való felszólító üzenetek megjelenése:
-#         assert self.page.invalid_email_msg() == TESTDATA['negative_email_msg']
-#         assert self.page.invalid_username_msg() == TESTDATA['negative_username_msg']
-#         assert self.page.invalid_password_msg() == TESTDATA['negative_password_msg']
-#         assert self.page.checkers_password().is_displayed()
-#         assert self.page.dif_password_againg_msg() == TESTDATA['negative_password_again_msg']
+    def test_reg_negative(self):
+        self.page.reg_negative_method()
+        #Helytelen formátumra való felszólító üzenetek megjelenése:
+        assert self.page.invalid_email_msg() == TESTDATA['negative_email_msg']
+        assert self.page.invalid_username_msg() == TESTDATA['negative_username_msg']
+        assert self.page.invalid_password_msg() == TESTDATA['negative_password_msg']
+        assert self.page.checkers_password().is_displayed()
+        assert self.page.dif_password_againg_msg() == TESTDATA['negative_password_again_msg']
 #
 #     def test_login_positive(self):
 #         self.page.login_method_p()
