@@ -1,4 +1,4 @@
 pytest
 allure-pytest
 selenium
-mysql.connector
+mysql-connector-python
