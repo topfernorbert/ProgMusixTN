@@ -62,6 +62,10 @@ jobs:
           sleep 5
         done
 
+    - name: List running Docker containers
+      run: |
+        docker ps
+
     - name: Create MySQL config file
       run: |
         echo "[client]" > ~/.my.cnf
