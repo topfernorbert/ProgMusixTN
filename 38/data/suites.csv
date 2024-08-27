@@ -1,4 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Tue Aug 27 12:39:46 GMT 2024","Tue Aug 27 12:39:47 GMT 2024","1063","","test_progmusix","TestProgmusix","","","test_reg_TAB",""
-"broken","Tue Aug 27 12:39:49 GMT 2024","Tue Aug 27 12:39:50 GMT 2024","553","","test_progmusix","TestProgmusix","","","test_contact",""
-"passed","Tue Aug 27 12:39:48 GMT 2024","Tue Aug 27 12:39:49 GMT 2024","563","","test_progmusix","TestProgmusix","","","test_reg_negative",""
