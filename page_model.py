@@ -189,7 +189,7 @@ class ProgMusix(GeneralPage):
             database="webshop"
         )
         cursor = connection.cursor()
-        cursor.execute("SELECT * FROM custom_user ORDER BY id DESC LIMIT 1")
+        cursor.execute("SELECT * FROM message ORDER BY id DESC LIMIT 1")
         return cursor.fetchone()
 
 
