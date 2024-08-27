@@ -24,7 +24,7 @@ jobs:
           - 4200:4200
           
       mysql:
-        image: mysql:8.0
+        image: mysql:8.0.36
         ports:
           - 3306:3306
         
