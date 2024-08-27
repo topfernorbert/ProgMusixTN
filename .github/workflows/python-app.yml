@@ -34,9 +34,9 @@ jobs:
         
         options: >-
           --health-cmd="mysqladmin ping --silent"
-          --health-interval=30s
-          --health-timeout=35s
-          --health-retries=5
+          --health-interval=10s
+          --health-timeout=10s
+          --health-retries=3
 
     steps:
     - uses: actions/checkout@v4
@@ -52,6 +52,13 @@ jobs:
         pip install flake8 pytest
         pip install mysql-connector-python
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        
+    - name: Wait for MySQL
+      run: |
+        while ! mysqladmin ping -h"127.0.0.1" --silent; do
+          echo "Waiting for MySQL..."
+          sleep 5
+        done
         
 
     - name: Lint with flake8
