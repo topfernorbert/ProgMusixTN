@@ -30,6 +30,8 @@ jobs:
         
         env:
           MYSQL_DATABASE: webshop
+          MYSQL_HOST: localhost
+          MYSQL_NAME: root
           MYSQL_ROOT_PASSWORD: test1234
         
         options: >-
