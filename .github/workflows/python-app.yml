@@ -62,10 +62,6 @@ jobs:
           sleep 5
         done
 
-    - name: Check MySQL container logs
-      run: |
-        docker logs a76770e46f33
-
     - name: List all databases
       run: |
         mysql -h"127.0.0.1" -uroot -ptest1234 -e "SHOW DATABASES;"
@@ -82,6 +78,10 @@ jobs:
     - name: Debug message table
       run: |
         mysql -h"127.0.0.1" -uroot -ptest1234 webshop -e "SHOW TABLES LIKE 'message';"
+
+    - name: Check MySQL container logs
+      run: |
+        docker logs a76770e46f33
       
 
     - name: Lint with flake8
