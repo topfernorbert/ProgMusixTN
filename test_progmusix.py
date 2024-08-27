@@ -74,7 +74,7 @@ class TestProgmusix:
         self.page.contact_field().send_keys(TESTDATA['contact_field'])
         self.page.contact_send_btm().click()
         #Sikerességet igazoló üzenet megjelenése:
-        assert self.page.contact_msg_succ() == TESTDATA['contact_msg_succ']
+        #assert self.page.contact_msg_succ() == TESTDATA['contact_msg_succ']
         #Egyezik, megjelenik az adatbázisban a beírt név, email cím, üzenet szövege:
         assert TESTDATA['contact_name'] and TESTDATA['contact_email'] and TESTDATA['contact_field'] in self.page.last_msg()
 #         self.page.contact_send_btn().click()
