@@ -34,9 +34,9 @@ jobs:
         
         options: >-
           --health-cmd="mysqladmin ping --silent"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=3
+          --health-interval=30s
+          --health-timeout=35s
+          --health-retries=5
 
     steps:
     - uses: actions/checkout@v4
