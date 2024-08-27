@@ -29,10 +29,9 @@ jobs:
           - 3306:3306
         
         env:
-          MYSQL_DATABASE: webshop
-          MYSQL_HOST: localhost
-          MYSQL_NAME: root
           MYSQL_ROOT_PASSWORD: test1234
+          MYSQL_DATABASE: webshop
+          
         
         options: >-
           --health-cmd="mysqladmin ping --silent"
