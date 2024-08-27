@@ -25,8 +25,7 @@ jobs:
           --health-cmd="curl --fail http://localhost:8080/health || exit 1" 
           --health-interval=10s 
           --health-timeout=5s 
-          --health-retries=5
-
+          
       frontend:
         image: lenartl/webshop-frontend:sprint-1
         ports:
