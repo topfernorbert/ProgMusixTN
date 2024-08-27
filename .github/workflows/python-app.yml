@@ -70,11 +70,11 @@ jobs:
       env:
         FRONTEND_URL: http://localhost:4200
         BACKEND_URL: http://localhost:8080
-        DATABASE_HOST: localhost
-        DATABASE_PORT: 3306
-        DATABASE_USERNAME: root
-        DATABASE_PASSWORD: test1234
-        DATABASE_NAME: webshop
+        HOST: localhost
+        PORT: 3306
+        USERNAME: root
+        PASSWORD: test1234
+        DATABASE: webshop
         
         
         
