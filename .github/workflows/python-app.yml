@@ -65,6 +65,11 @@ jobs:
     - name: List tables in webshop database
       run: |
         mysql -h"127.0.0.1" -uroot -ptest1234 webshop -e "SHOW TABLES;"
+
+    - name: Check Tables in Webshop Database
+      run: |
+        mysql -h"127.0.0.1" -uroot -ptest1234 webshop -e "SHOW TABLES;"
+
         
 
     - name: Lint with flake8
