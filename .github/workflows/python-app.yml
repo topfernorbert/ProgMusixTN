@@ -19,7 +19,7 @@ jobs:
         image: lenartl/webshop-backend:sprint-1
         ports:
           - 8080:8080
-        options: >
+        options:
           --health-cmd="curl --fail http://localhost:8080/health || exit 1"
           --health-interval=10s
           --health-timeout=5s
@@ -29,7 +29,7 @@ jobs:
         image: lenartl/webshop-frontend:sprint-1
         ports:
           - 4200:4200
-        options: >
+        options:
           --health-cmd="curl --fail http://localhost:4200/health || exit 1"
           --health-interval=10s
           --health-timeout=5s
