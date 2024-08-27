@@ -19,7 +19,7 @@ jobs:
 
     services:
       webapp:
-        image: <projektmunka-webshop1> # Cseréld le a te Docker image nevedre
+        image: <lenartl/webshop-frontend:sprint-1> # Cseréld le a te Docker image nevedre
         ports:
           - 4200:4200
         options: > 
