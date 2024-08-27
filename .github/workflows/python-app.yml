@@ -81,9 +81,6 @@ jobs:
       run: |
         mysqladmin -h"127.0.0.1" -uroot -ptest1234 ping
 
-    - name: Query message table
-      run: |
-        mysql -h"127.0.0.1" -uroot -ptest1234 webshop -e "SELECT * FROM message LIMIT 1;"
 
     - name: Check for message table in webshop database
       run: |
