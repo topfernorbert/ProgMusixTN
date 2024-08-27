@@ -29,10 +29,11 @@ jobs:
           - 3306:3306
         
         env:
+          MYSQL_USERNAME: root
           MYSQL_ROOT_PASSWORD: test1234
           MYSQL_DATABASE: webshop
+          MYSQL_HOSTNAME: 127.0.0.1
           
-        
         options: >-
           --health-cmd="mysqladmin ping --silent"
           --health-interval=10s
