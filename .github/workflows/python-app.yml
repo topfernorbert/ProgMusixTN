@@ -54,35 +54,11 @@ jobs:
         pip install flake8 pytest
         pip install mysql-connector-python
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: List running Docker containers
+      run: |
+        docker ps
         
-    - name: Wait for MySQL
-      run: |
-        while ! mysqladmin -h"127.0.0.1" -uroot -ptest1234 ping --silent; do
-          echo "Waiting for MySQL..."
-          sleep 5
-        done
-
-    - name: List all databases
-      run: |
-        mysql -h"127.0.0.1" -uroot -ptest1234 -e "SHOW DATABASES;"
-
-    - name: List tables in webshop database
-      run: |
-        mysql -h"127.0.0.1" -uroot -ptest1234 webshop -e "SHOW TABLES;"
-
-
-    - name: Check MySQL logs
-      run: |
-        docker logs a76770e46f33
-        
-    - name: Debug message table
-      run: |
-        mysql -h"127.0.0.1" -uroot -ptest1234 webshop -e "SHOW TABLES LIKE 'message';"
-
-    - name: Check MySQL container logs
-      run: |
-        docker logs a76770e46f33
-      
 
     - name: Lint with flake8
       run: |
@@ -93,14 +69,7 @@ jobs:
       env:
         FRONTEND_URL: http://localhost:4200
         BACKEND_URL: http://localhost:8080
-        HOST: localhost
-        PORT: 3306
-        USERNAME: root
-        PASSWORD: test1234
-        DATABASE: kiskutya
-        
-        
-        
+    
       run: |
         pytest --alluredir=allure-results
 
