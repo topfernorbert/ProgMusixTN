@@ -73,6 +73,10 @@ jobs:
       run: |
         mysql webshop -e "SHOW TABLES;"
 
+    - name: Verify MySQL connection
+      run: |
+        mysql -h"127.0.0.1" -uroot -ptest1234 -e "SHOW DATABASES;"
+
     - name: Lint with flake8
       run: |
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
