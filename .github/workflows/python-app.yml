@@ -26,9 +26,8 @@ jobs:
       mysql:
         image: mysql:8.0.36
         env:
+          MYSQL_ROOT_PASSWORD: test1234
           MYSQL_DATABASE: webshop
-          MYSQL_USER: root
-          MYSQL_PASSWORD: test1234
         ports:
          - 3306:3306
 
