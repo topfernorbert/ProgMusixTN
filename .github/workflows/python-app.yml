@@ -62,11 +62,6 @@ jobs:
           sleep 5
         done
 
-    - name: Verify MySQL tables
-      run: |
-        mysql -h"127.0.0.1" -uroot -ptest1234 webshop -e "SHOW TABLES;"
-        mysql -h"127.0.0.1" -uroot -ptest1234 webshop -e "DESCRIBE message;"
-
     - name: Lint with flake8
       run: |
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
