@@ -55,11 +55,13 @@ jobs:
       env:
         FRONTEND_URL: http://localhost:4200
         BACKEND_URL: http://localhost:8080
-        MYSQL_HOST: localhost
-        MYSQL_PORT: 3306
-        MYSQL_DATABASE: webshop
-        MYSQL_USER: root
-        MYSQL_PASSWORD: test1234
+        DATABASE_HOST: localhost
+        DATABASE_PORT: 3306
+        DATABASE_USER: root
+        DATABASE_PASSWORD: test1234
+        DATABASE_NAME: webshop
+        
+        
         
       run: |
         pytest --alluredir=allure-results
