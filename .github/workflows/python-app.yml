@@ -57,42 +57,27 @@ jobs:
         
     - name: Wait for MySQL
       run: |
-        while ! mysqladmin ping -h"127.0.0.1" --silent; do
+        while ! mysqladmin -h"127.0.0.1" -uroot -ptest1234 ping --silent; do
           echo "Waiting for MySQL..."
           sleep 5
         done
 
-    - name: List running Docker containers
+    - name: Check MySQL container logs
       run: |
-        docker ps
+        docker logs a76770e46f33
 
-    - name: Create MySQL config file
-      run: |
-        echo "[client]" > ~/.my.cnf
-        echo "user=root" >> ~/.my.cnf
-        echo "password=test1234" >> ~/.my.cnf
-        echo "host=127.0.0.1" >> ~/.my.cnf
-
-    - name: Show MySQL tables
-      run: |
-        mysql webshop -e "SHOW TABLES;"
-
-    - name: Verify MySQL connection
+    - name: List all databases
       run: |
         mysql -h"127.0.0.1" -uroot -ptest1234 -e "SHOW DATABASES;"
 
-    - name: Check MySQL container status
+    - name: List tables in webshop database
       run: |
-        mysqladmin -h"127.0.0.1" -uroot -ptest1234 ping
+        mysql -h"127.0.0.1" -uroot -ptest1234 webshop -e "SHOW TABLES;"
 
-
-    - name: Check for message table in webshop database
-      run: |
-        mysql -h"127.0.0.1" -uroot -ptest1234 webshop -e "SHOW TABLES LIKE 'message';"
 
     - name: Check MySQL logs
       run: |
-        docker logs <mysql-container-id>
+        docker logs a76770e46f33
         
     - name: Debug message table
       run: |
