@@ -22,23 +22,18 @@ jobs:
         image: lenartl/webshop-frontend:sprint-1
         ports:
           - 4200:4200
-          
       mysql:
         image: mysql:8.0.36
         ports:
-          - 3306:3306
-        
-        env:
-          MYSQL_USERNAME: root
-          MYSQL_ROOT_PASSWORD: test1234
-          MYSQL_DATABASE: webshop
-          MYSQL_HOSTNAME: 127.0.0.1
-          
-        options: >-
-          --health-cmd="mysqladmin ping --silent"
-          --health-interval=10s
-          --health-timeout=10s
-          --health-retries=3
+          - "3306:3306"
+      environment:
+       MYSQL_ROOT_PASSWORD: test1234
+       MYSQL_DATABASE: webshop
+       MYSQL_USER: root
+       
+
+         
+
 
     steps:
     - uses: actions/checkout@v4
