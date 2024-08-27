@@ -9,7 +9,7 @@ class GeneralPage:
 
     def open(self):
         self.browser.get(self.url)
-        self.browser.maximize_window()
+        self.browser.set_window_size(1024,800)
 
     def close(self):
         self.browser.close()
