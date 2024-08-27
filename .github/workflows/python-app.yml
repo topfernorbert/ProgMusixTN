@@ -28,7 +28,7 @@ jobs:
         env:
           MYSQL_DATABASE: webshop
           MYSQL_USER: root
-          MYSQL_PASSWORD: test1234
+          MYSQL_ROOT_PASSWORD: test1234
         ports:
          - 3306:3306
 
