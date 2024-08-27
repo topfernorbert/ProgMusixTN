@@ -62,9 +62,16 @@ jobs:
           sleep 5
         done
 
+    - name: Create MySQL config file
+      run: |
+        echo "[client]" > ~/.my.cnf
+        echo "user=root" >> ~/.my.cnf
+        echo "password=test1234" >> ~/.my.cnf
+        echo "host=127.0.0.1" >> ~/.my.cnf
+
     - name: Show MySQL tables
       run: |
-        mysql -h"127.0.0.1" -uroot -ptest1234 webshop -e "SHOW TABLES;"
+        mysql webshop -e "SHOW TABLES;"
 
     - name: Lint with flake8
       run: |
