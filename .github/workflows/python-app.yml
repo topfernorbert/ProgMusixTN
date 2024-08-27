@@ -72,6 +72,12 @@ jobs:
       env:
         FRONTEND_URL: http://localhost:4200
         BACKEND_URL: http://localhost:8080
+        host: "localhost"
+        port: 3306
+        user: "root"
+        password: "test1234"
+        database: "webshop"
+        
     
       run: |
         pytest --alluredir=allure-results
