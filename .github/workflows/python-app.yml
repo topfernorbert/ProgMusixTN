@@ -53,7 +53,7 @@ jobs:
 
     - name: Check Localhost Service
       run: |
-        curl -I http://localhost:8080/api/categories
+        curl -I http://backend:8080/api/categories
 
     - name: Run Postman Tests
       run: |
