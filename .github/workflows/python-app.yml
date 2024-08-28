@@ -44,6 +44,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         pip install mysql-connector-python
+        mysql_upgrade -u root -p --force
 
     - name: Wait for MySQL to be ready
       run: sleep 30
