@@ -58,6 +58,11 @@ jobs:
         --reporters cli,junit \
         --reporter-junit-export postman-results.xml
 
+    - name: Check Localhost Service
+      run: |
+        curl -I http://localhost:8080/api/categories
+        
+
     - name: Test with pytest
       env:
         FRONTEND_URL: http://localhost:4200
