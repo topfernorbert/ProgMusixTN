@@ -51,12 +51,19 @@ jobs:
     - name: Install Newman
       run: npm install -g newman
 
+    - name: Check Localhost Service
+      run: |
+        curl -I http://backend:8080/api/categories
+
     - name: Run Postman Tests
       run: |
         newman run ./Postman/postman_collection.json \
         --environment ./Postman/postman_environment.json \
         --reporters cli,junit \
         --reporter-junit-export postman-results.xml
+
+    
+        
 
     - name: Test with pytest
       env:
