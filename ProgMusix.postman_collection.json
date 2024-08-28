@@ -1,0 +1,306 @@
+{
+	"info": {
+		"_postman_id": "db7db03f-e826-4e0a-b213-e4d73068cc50",
+		"name": "ProgMusix",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34958965"
+	},
+	"item": [
+		{
+			"name": "Regisztráció, bejelentkezés",
+			"item": [
+				{
+					"name": "Reg",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\": \"UHJvZ01hc3RlcnNUTg==\",\r\n    \"email\": \"cHJvZ21hc3RlcnN0bkBlbmR0ZXN0LW1haWwuaW8=\",\r\n    \"password\": \"VGVzdDEyMzQ1IQ==\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ProgMusixURL}}/api/users",
+							"host": [
+								"{{ProgMusixURL}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{ProgMusixURL}}/api/users/login?userName=ProgMastersTN&password=Test12345!",
+							"host": [
+								"{{ProgMusixURL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"login"
+							],
+							"query": [
+								{
+									"key": "userName",
+									"value": "ProgMastersTN"
+								},
+								{
+									"key": "password",
+									"value": "Test12345!"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirmation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ProgMusixURL}}/api/users/confirm?token=8e9d400d-7ed2-46f6-88b6-79d2ef2cd749",
+							"host": [
+								"{{ProgMusixURL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"confirm"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "8e9d400d-7ed2-46f6-88b6-79d2ef2cd749"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Üzenetküldés",
+			"item": [
+				{
+					"name": "Message",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Lakatos Brendon\",\r\n    \"message\": \"MIVAAAAAN KALÁCSKÉPŰŰŰŰŰ\",\r\n    \"email\": \"brendon@kiraly.hu\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ProgMusixURL}}/api/messages",
+							"host": [
+								"{{ProgMusixURL}}"
+							],
+							"path": [
+								"api",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tokenek",
+			"item": [
+				{
+					"name": "Refresh token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ProgMusixURL}}/api/users/token/refresh",
+							"host": [
+								"{{ProgMusixURL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"token",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UserData",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Refresh token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ProgMusixURL}}/api/users/userData",
+					"host": [
+						"{{ProgMusixURL}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"userData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New category",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Refresh token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{ProgMusixURL}}/api/users/userData",
+					"host": [
+						"{{ProgMusixURL}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"userData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ProgMusixURL}}/api/categories",
+					"host": [
+						"{{ProgMusixURL}}"
+					],
+					"path": [
+						"api",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Categories ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ProgMusixURL}}/api/products/1",
+					"host": [
+						"{{ProgMusixURL}}"
+					],
+					"path": [
+						"api",
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send_Rating",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Acess token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"value\": \"1\",\r\n    \"text\": \"Hát, nem valami nagy szám...\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ProgMusixURL}}/api/ratings/1",
+					"host": [
+						"{{ProgMusixURL}}"
+					],
+					"path": [
+						"api",
+						"ratings",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
