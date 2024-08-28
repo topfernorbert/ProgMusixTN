@@ -24,9 +24,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{ProgMusixURL}}/api/users",
+							"raw": "{{baseUrl}}/api/users",
 							"host": [
-								"{{ProgMusixURL}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
