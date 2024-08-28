@@ -64,6 +64,13 @@ jobs:
       run: |
         mysql -h"127.0.0.1" -uroot -ptest1234 webshop -e "SHOW TABLES;"
 
+    - name: Debug MySQL Connection
+      run: |
+        echo "Checking available tables in 'webshop' database:"
+        mysql -h"127.0.0.1" -uroot -ptest1234 webshop -e "SHOW TABLES;"
+        echo "Attempting to describe 'message' table:"
+        mysql -h"127.0.0.1" -uroot -ptest1234 webshop -e "DESCRIBE message;"
+
         
 
     - name: Lint with flake8
