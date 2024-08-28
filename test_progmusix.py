@@ -1,7 +1,8 @@
 from configs.config import get_preconfigured_chrome_driver
 from page_model import ProgMusix
 from configs.testdata import TESTDATA
-
+import requests
+import json
 
 class TestProgmusix:
     def setup_method(self):
@@ -43,5 +44,14 @@ class TestProgmusix:
         self.page.contact_send_btm().click()
         #Egyezik, megjelenik az adatbázisban a beírt név, email cím, üzenet szövege:
         #assert TESTDATA['contact_name'] and TESTDATA['contact_email'] and TESTDATA['contact_field'] in self.page.last_msg()
+
+    def test_categories(self):
+        url = "http://localhost:8080/api/categories"
+        payload = {}
+        headers = {}
+        response = requests.request("GET", url, headers=headers, data=payload)
+        assert response.text == TESTDATA['Postman_categories']
+
+
 
 
