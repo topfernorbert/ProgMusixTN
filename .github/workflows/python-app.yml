@@ -26,12 +26,11 @@ jobs:
       mysql:
         image: mysql:8.0
         env:
-          MYSQL_USER: root
           MYSQL_ROOT_PASSWORD: test1234
           MYSQL_DATABASE: webshop
         ports:
-         - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping --silent" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
     - uses: actions/checkout@v4
@@ -45,7 +44,19 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        pip install mysql-connector-python
+
+    - name: Test MySQL Connection
+      run: |
+        mysql -h"127.0.0.1" -uroot -ptest1234 -e "SHOW DATABASES;"
+
+    - name: List running Docker containers
+      run: |
+        docker ps
+
+    - name: List tables in webshop database
+      run: |
+        mysql -h"127.0.0.1" -uroot -ptest1234 webshop -e "SHOW TABLES;"
 
     - name: Lint with flake8
       run: |
@@ -56,14 +67,13 @@ jobs:
       env:
         FRONTEND_URL: http://localhost:4200
         BACKEND_URL: http://localhost:8080
-        DATABASE_HOST: localhost
-        DATABASE_PORT: 3306
-        DATABASE_USERNAME: root
-        DATABASE_PASSWORD: test1234
-        DATABASE_NAME: webshop
+        host: localhost
+        port: 3306
+        user: root
+        password: test1234
+        database: webshop
         
-        
-        
+    
       run: |
         pytest --alluredir=allure-results
 
