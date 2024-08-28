@@ -42,9 +42,9 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{ProgMusixURL}}/api/users/login?userName=ProgMastersTN&password=Test12345!",
+							"raw": "{{baseUrl}}/api/users/login?userName=ProgMastersTN&password=Test12345!",
 							"host": [
-								"{{ProgMusixURL}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
@@ -71,9 +71,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{ProgMusixURL}}/api/users/confirm?token=8e9d400d-7ed2-46f6-88b6-79d2ef2cd749",
+							"raw": "{{baseUrl}}/api/users/confirm?token=8e9d400d-7ed2-46f6-88b6-79d2ef2cd749",
 							"host": [
-								"{{ProgMusixURL}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
@@ -103,7 +103,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{token}}",
+									"value": "{{Acess token}}",
 									"type": "string"
 								}
 							]
@@ -112,7 +112,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Lakatos Brendon\",\r\n    \"message\": \"MIVAAAAAN KALÁCSKÉPŰŰŰŰŰ\",\r\n    \"email\": \"brendon@kiraly.hu\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Lakatos Brendon\",\r\n    \"message\": \"Csaka Postman kalácsok\",\r\n    \"email\": \"brendon@kiraly.hu\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -120,9 +120,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{ProgMusixURL}}/api/messages",
+							"raw": "{{baseUrl}}/api/messages",
 							"host": [
-								"{{ProgMusixURL}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
@@ -153,9 +153,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{ProgMusixURL}}/api/users/token/refresh",
+							"raw": "{{baseUrl}}/api/users/token/refresh",
 							"host": [
-								"{{ProgMusixURL}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
@@ -185,9 +185,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{ProgMusixURL}}/api/users/userData",
+					"raw": "{{baseUrl}}/api/users/userData",
 					"host": [
-						"{{ProgMusixURL}}"
+						"{{baseUrl}}"
 					],
 					"path": [
 						"api",
@@ -206,22 +206,30 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "{{Refresh token}}",
+							"value": "{{token}}",
 							"type": "string"
 						}
 					]
 				},
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Brendon\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "{{ProgMusixURL}}/api/users/userData",
+					"raw": "{{baseUrl}}/api/categories",
 					"host": [
-						"{{ProgMusixURL}}"
+						"{{baseUrl}}"
 					],
 					"path": [
 						"api",
-						"users",
-						"userData"
+						"categories"
 					]
 				}
 			},
@@ -233,9 +241,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{ProgMusixURL}}/api/categories",
+					"raw": "{{baseUrl}}/api/categories",
 					"host": [
-						"{{ProgMusixURL}}"
+						"{{baseUrl}}"
 					],
 					"path": [
 						"api",
@@ -251,9 +259,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{ProgMusixURL}}/api/products/1",
+					"raw": "{{baseUrl}}/api/products/1",
 					"host": [
-						"{{ProgMusixURL}}"
+						"{{baseUrl}}"
 					],
 					"path": [
 						"api",
@@ -289,9 +297,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{ProgMusixURL}}/api/ratings/1",
+					"raw": "{{baseUrl}}/api/ratings/1",
 					"host": [
-						"{{ProgMusixURL}}"
+						"{{baseUrl}}"
 					],
 					"path": [
 						"api",
