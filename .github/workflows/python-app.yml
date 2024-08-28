@@ -53,8 +53,8 @@ jobs:
 
     - name: Run Postman Tests
       run: |
-        newman run /Postman/postman_collection.json \
-        --environment /Postman/postman_environment.json \
+        newman run ProgMusixproba/Postman/postman_collection.json \
+        --environment ProgMusixproba/Postman/postman_environment.json \
         --reporters cli,junit \
         --reporter-junit-export postman-results.xml
 
