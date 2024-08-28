@@ -53,8 +53,8 @@ jobs:
 
     - name: Run Postman Tests
       run: |
-        newman run /path/to/your/postman_collection.json \
-        --environment /path/to/your/postman_environment.json \
+        newman run ./Postman/postman_collection.json \
+        --environment ./Postman/postman_environment.json \
         --reporters cli,junit \
         --reporter-junit-export postman-results.xml
 
