@@ -39,6 +39,10 @@ jobs:
         docker run -d --name database -e MYSQL_ROOT_PASSWORD=test1234 -e MYSQL_DATABASE=webshop -p 3306:3306 mysql:8.0
         docker run -d --name backend -p 8080:8080 lenartl/webshop-backend:sprint-1
 
+    - name: Check running containers
+      run: |
+        docker ps --format "{{.Names}}"
+
     - name: Verify containers are running
       run: |
           containers="frontend backend mysql"
@@ -50,12 +54,6 @@ jobs:
             fi
           done
       
-        
-
-    - name: Check running containers
-      run: |
-        docker ps --format "{{.Names}}"
-
     - name: Check connection to backend container
       run: |
           sleep 10
