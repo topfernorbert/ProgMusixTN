@@ -48,7 +48,7 @@ jobs:
 
     - name: Test Backend Service
       run: |
-        docker exec backend curl -I http://backend:8080/api/categories
+        docker exec backend curl -I http://localhost:8080/api/categories
 
     - name: Test MySQL Service
       run: |
