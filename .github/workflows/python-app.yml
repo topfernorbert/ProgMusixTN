@@ -11,13 +11,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-  start-and-check-container:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Start Docker container
-        run: |
-          docker run -d --name webshop-backend -p 8080:8080 lenartl/webshop-backend:sprint-1
-
     services:
       backend:
         image: lenartl/webshop-backend:sprint-1
@@ -54,6 +47,10 @@ jobs:
       run: |
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+    - name: Start Backend container
+      run: |
+        docker run -d --name backend -p 8080:8080 lenartl/webshop-backend:sprint-1
 
     - name: Check running containers
       run: |
