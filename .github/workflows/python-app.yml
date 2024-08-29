@@ -38,20 +38,18 @@ jobs:
         docker run -d --name frontend -p 4200:4200 lenartl/webshop-frontend:sprint-1
         docker run -d --name database -e MYSQL_ROOT_PASSWORD=test1234 -e MYSQL_DATABASE=webshop -p 3306:3306 mysql:8.0
         docker run -d --name backend -p 8080:8080 lenartl/webshop-backend:sprint-1
-      
 
     - name: Verify containers are running
       run: |
-        ids="ce9f183f857c 724477e9bdeb 9f16a5e5750b"
-        for id in $ids; do
-          if [ -n "$(docker ps -q -f id=$id)" ]; then
-             echo "Container with ID $id is running."
-          else
-            echo "Container with ID $id is not running." && exit 1
-          fi
-        done
-
-    
+          containers="frontend backend mysql"
+          for name in $containers; do
+            if [ -n "$(docker ps -q -f name=$name)" ]; then
+              echo "Container with name $name is running."
+            else
+              echo "Container with name $name is not running." && exit 1
+            fi
+          done
+      
         
 
     - name: Check running containers
