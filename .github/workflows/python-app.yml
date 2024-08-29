@@ -41,9 +41,12 @@ jobs:
       run: |
         docker ps --format "{{.Names}}"
 
-    - name: Run API Tests
+    - name: Check connection to backend container
       run: |
-       curl http://backend:8080/api/categories
+          sleep 10
+          docker exec backend curl -sSf http://localhost:8080 || exit 1
+
+
 
     - name: Test Backend Service
       run: |
