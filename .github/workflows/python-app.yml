@@ -16,8 +16,10 @@ jobs:
         image: lenartl/webshop-backend:sprint-1
         ports:
           - 8080:8080
-
-
+      frontend:
+        image: lenartl/webshop-frontend:sprint-1
+        ports:
+          - 4200:4200
       mysql:
         image: mysql:8.0
         env:
@@ -25,8 +27,8 @@ jobs:
           MYSQL_DATABASE: webshop
         ports:
           - 3306:3306
-        options: --health-cmd="mysqladmin ping --silent" --health-interval=30s --health-retries=3 --health-timeout=10s
-    
+        options: --health-cmd="mysqladmin ping --silent" --health-interval=10s --health-timeout=5s --health-retries=3
+        
     steps:
     - uses: actions/checkout@v4
 
