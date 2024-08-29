@@ -46,7 +46,9 @@ jobs:
 
     - name: Check MySQL container status
       run: |
-        docker ps -a --filter name=mysql
+        docker ps -a --filter name=database
+        docker ps -a --filter name=frontend
+        docker ps -a --filter name=backend
 
         
 
@@ -56,7 +58,7 @@ jobs:
 
     - name: Verify containers are running
       run: |
-          containers="frontend backend mysql"
+          containers="frontend backend database"
           for name in $containers; do
             if [ -n "$(docker ps -q -f name=$name)" ]; then
               echo "Container with name $name is running."
