@@ -61,6 +61,8 @@ jobs:
 
     - name: View containers logs
       run: |
+        docker logs frontend
+        docker logs backend
         docker logs database
 
     - name: Check containes status
