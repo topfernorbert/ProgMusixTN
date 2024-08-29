@@ -43,7 +43,7 @@ jobs:
 
     - name: Run API Tests
       run: |
-       curl http://localhost:8080/api/categories
+       curl http://backend:8080/api/categories
 
     - name: Test Backend Service
       run: |
