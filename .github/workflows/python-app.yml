@@ -69,7 +69,7 @@ jobs:
 
     - name: Verify containers are running
       run: |
-          containers="frontend backend database"
+          containers="mysql-container frontend-container backend-container"
           for name in $containers; do
             if [ -n "$(docker ps -q -f name=$name)" ]; then
               echo "Container with name $name is running."
