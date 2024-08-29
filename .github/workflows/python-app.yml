@@ -10,6 +10,12 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    services:
+      backend:
+        image: lenartl/webshop-backend:sprint-1
+        ports:
+          - 8080:8080
         
     steps:
     - uses: actions/checkout@v4
