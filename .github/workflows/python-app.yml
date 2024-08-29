@@ -43,7 +43,7 @@ jobs:
 
     - name: Run tests inside container
       run: |
-        docker exec backend curl -I http://localhost:8080/api/categories
+        docker exec backend curl -I http://backend:8080/api/categories
 
     - name: Install Newman
       run: npm install -g newman
