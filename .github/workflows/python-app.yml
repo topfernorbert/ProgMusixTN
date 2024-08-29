@@ -41,6 +41,10 @@ jobs:
       run: |
         docker ps --format "{{.Names}}"
 
+    - name: Run API Tests
+      run: |
+       curl http://localhost:8080/api/categories
+
     - name: Test Backend Service
       run: |
         docker exec backend curl -I http://localhost:8080/api/categories
