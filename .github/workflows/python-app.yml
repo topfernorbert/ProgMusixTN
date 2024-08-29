@@ -40,11 +40,11 @@ jobs:
         docker run -d --name database -e MYSQL_ROOT_PASSWORD=test1234 -e MYSQL_DATABASE=webshop -p 3306:3306 mysql:8.0.36
        
 
-    - name: View MySQL container logs
+    - name: View containers logs
       run: |
         docker logs database
 
-    - name: Check MySQL container status
+    - name: Check containes status
       run: |
         docker ps -a --filter name=database
         docker ps -a --filter name=frontend
