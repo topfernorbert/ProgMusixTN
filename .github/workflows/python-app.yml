@@ -16,6 +16,10 @@ jobs:
         image: lenartl/webshop-backend:sprint-1
         ports:
           - 8080:8080
+      frontend:
+        image: lenartl/webshop-frontend:sprint-1
+        ports:
+          - 4200:4200
         
     steps:
     - uses: actions/checkout@v4
@@ -36,14 +40,14 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
-    - name: Set up Docker
-      uses: docker/setup-buildx-action@v2
+    # - name: Set up Docker
+    #   uses: docker/setup-buildx-action@v2
       
-    - name: Start all containers
-      run: |
-        docker run -d --name frontend -p 4200:4200 lenartl/webshop-frontend:sprint-1
-        docker run -d --name backend -p 8080:8080 lenartl/webshop-backend:sprint-1
-        docker run -d --name database -e MYSQL_ROOT_PASSWORD=test1234 -e MYSQL_DATABASE=webshop -p 3306:3306 mysql:8.0.36
+    # - name: Start all containers
+    #   run: |
+    #     docker run -d --name frontend -p 4200:4200 lenartl/webshop-frontend:sprint-1
+    #     docker run -d --name backend -p 8080:8080 lenartl/webshop-backend:sprint-1
+    #     docker run -d --name database -e MYSQL_ROOT_PASSWORD=test1234 -e MYSQL_DATABASE=webshop -p 3306:3306 mysql:8.0.36
        
 
     - name: View containers logs
