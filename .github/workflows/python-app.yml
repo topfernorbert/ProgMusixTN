@@ -10,26 +10,6 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    services:
-      backend:
-        image: lenartl/webshop-backend:sprint-1
-        ports:
-          - 8080:8080
-        
-      frontend:
-        image: lenartl/webshop-frontend:sprint-1
-        ports:
-          - 4200:4200
-          
-      mysql:
-        image: mysql:8.0
-        env:
-          MYSQL_ROOT_PASSWORD: test1234
-          MYSQL_DATABASE: webshop
-        ports:
-          - 3306:3306
-        options: --health-cmd="mysqladmin ping --silent" --health-interval=10s --health-timeout=5s --health-retries=3
         
     steps:
     - uses: actions/checkout@v4
@@ -50,15 +30,11 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
-    
-
-    
-
-    # - name: Start all containers
-    #   run: |
-    #     docker run -d --name frontend -p 4200:4200 lenartl/webshop-frontend:sprint-1
-    #     docker run -d --name database -e MYSQL_ROOT_PASSWORD=test1234 -e MYSQL_DATABASE=webshop -p 3306:3306 mysql:8.0
-    #     docker run -d --name backend -p 8080:8080 lenartl/webshop-backend:sprint-1
+    - name: Start all containers
+      run: |
+        docker run -d --name frontend -p 4200:4200 lenartl/webshop-frontend:sprint-1
+        docker run -d --name database -e MYSQL_ROOT_PASSWORD=test1234 -e MYSQL_DATABASE=webshop -p 3306:3306 mysql:8.0
+        docker run -d --name backend -p 8080:8080 lenartl/webshop-backend:sprint-1
         
 
     - name: Check running containers
