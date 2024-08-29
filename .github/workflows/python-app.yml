@@ -30,6 +30,9 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
+    - name: Create Docker network
+      run: docker network create my-network
+
     - name: Start all containers
       run: |
         docker run -d --name frontend -p 4200:4200 lenartl/webshop-frontend:sprint-1
@@ -54,9 +57,6 @@ jobs:
         --environment ./Postman/postman_environment.json \
         --reporters cli,junit \
         --reporter-junit-export postman-results.xml
-
-    
-        
 
     - name: Test with pytest
       env:
