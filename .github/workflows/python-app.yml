@@ -11,6 +11,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+  start-and-check-container:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Start Docker container
+        run: |
+          docker run -d --name webshop-backend -p 8080:8080 lenartl/webshop-backend:sprint-1
+
     services:
       backend:
         image: lenartl/webshop-backend:sprint-1
