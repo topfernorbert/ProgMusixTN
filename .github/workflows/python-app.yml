@@ -57,9 +57,9 @@ jobs:
     - name: Check containes status
       run: |
         sleep 10
-        docker ps -a --filter name=database
-        docker ps -a --filter name=frontend
-        docker ps -a --filter name=backend
+        docker ps -a --filter name=mysql-container
+        docker ps -a --filter name=frontend-container
+        docker ps -a --filter name=backend-container
 
         
 
