@@ -48,9 +48,7 @@ jobs:
 
     
 
-    - name: Test MySQL Service
-      run: |
-        docker exec mysql mysql -uroot -ptest1234 -e "SHOW DATABASES;"
+    
 
     # - name: Start all containers
     #   run: |
@@ -66,6 +64,10 @@ jobs:
     - name: Test Backend Service
       run: |
         docker exec backend curl -I http://localhost:8080/api/categories
+        
+    - name: Test MySQL Service
+      run: |
+        docker exec database -uroot -ptest1234 -e "SHOW DATABASES;"
 
     # - name: Run tests inside container
     #   run: |
