@@ -16,10 +16,13 @@ jobs:
         image: lenartl/webshop-backend:sprint-1
         ports:
           - 8080:8080
+        options: --health-cmd="curl --silent --fail http://localhost:8080/health" --health-interval=30s --health-retries=3 --health-timeout=10s
+        
       frontend:
         image: lenartl/webshop-frontend:sprint-1
         ports:
           - 4200:4200
+          
       mysql:
         image: mysql:8.0
         env:
