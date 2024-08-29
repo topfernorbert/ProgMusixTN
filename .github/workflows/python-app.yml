@@ -37,7 +37,17 @@ jobs:
       run: |
         docker run -d --name frontend -p 4200:4200 lenartl/webshop-frontend:sprint-1
         docker run -d --name database -e MYSQL_ROOT_PASSWORD=test1234 -e MYSQL_DATABASE=webshop -p 3306:3306 mysql:8.0
-        docker run -d --name backend -p 8080:8080 lenartl/webshop-backend:sprint-1
+        docker run -d --name mysql -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 mysql:8.0.36
+
+    - name: View MySQL container logs
+      run: |
+        docker logs mysql
+
+    - name: Check MySQL container status
+      run: |
+        docker ps -a --filter name=mysql
+
+        
 
     - name: Check running containers
       run: |
