@@ -50,7 +50,10 @@ jobs:
 
     - name: Start Backend container
       run: |
+        docker run -d --name frontend -p 4200:4200 lenartl/webshop-frontend:sprint-1
+        docker run -d --name database -p 3306:3306 mysql:8.0.36
         docker run -d --name backend -p 8080:8080 lenartl/webshop-backend:sprint-1
+        
 
     - name: Check running containers
       run: |
