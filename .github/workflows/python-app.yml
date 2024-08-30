@@ -43,24 +43,31 @@ jobs:
           docker pull lenartl/webshop-frontend:sprint-1
           docker pull mysql:8.0.36
 
-    - name: Run MySQL container
+    - name: Run Docker containers
       run: |
-          docker run -d --name mysql-container \
-            -e MYSQL_ROOT_PASSWORD=root \
-            -e MYSQL_DATABASE=mydb \
-            mysql:5.7
+          docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=mydb mysql:8.0.36 && \
+          docker run -d --name backend-container -p 8080:8080 lenartl/webshop-backend:sprint-1 && \
+          docker run -d --name frontend-container -p 4200:4200 lenartl/webshop-frontend:sprint-1
 
-    - name: Run Backend container
-      run: |
-          docker run -d --name backend-container \
-            -p 8080:8080 \
-            lenartl/webshop-backend:sprint-1
 
-    - name: Run Frontend container
-      run: |
-          docker run -d --name frontend-container \
-            -p 80:80 \
-            lenartl/webshop-frontend:sprint-1
+    # - name: Run MySQL container
+    #   run: |
+    #       docker run -d --name mysql-container \
+    #         -e MYSQL_ROOT_PASSWORD=root \
+    #         -e MYSQL_DATABASE=mydb \
+    #         mysql:8.0.36
+
+    # - name: Run Backend container
+    #   run: |
+    #       docker run -d --name backend-container \
+    #         -p 8080:8080 \
+    #         lenartl/webshop-backend:sprint-1
+
+    # - name: Run Frontend container
+    #   run: |
+    #       docker run -d --name frontend-container \
+    #         -p 4200:4200 \
+    #         lenartl/webshop-frontend:sprint-1
 
     - name: Check running containers
       run: docker ps
