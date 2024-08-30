@@ -57,9 +57,9 @@ jobs:
       run: |
         docker ps --format "{{.Names}}"
 
-    - name: List database tables
+    - name: Check MySQL tables
       run: |
-        docker exec -i database mysql -u root -ptest1234 -e "SHOW TABLES;" webshop
+        docker exec -i $(docker ps -qf "name=database") mysql -u root -ptest1234 -e "SHOW TABLES;" webshop
 
         
     - name: Test with pytest
