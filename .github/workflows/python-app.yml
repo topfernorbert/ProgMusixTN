@@ -82,7 +82,7 @@ jobs:
       env:
         FRONTEND_URL: http://localhost:4200
         BACKEND_URL: http://localhost:8080
-        host: localhost
+        host: mysql-container
         port: 3306
         user: root
         password: test1234
