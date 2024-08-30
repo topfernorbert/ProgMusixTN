@@ -56,13 +56,13 @@ jobs:
 
     - name: Wait for database to be available
       run: |
-        for i in {1..30}; do
+        for i in {1..50}; do
         if docker exec database mysqladmin ping -hlocalhost --silent; then
         echo "Database is up!"
         exit 0
         else
         echo "Waiting for database..."
-        sleep 10
+        sleep 20
         fi
         done
         echo "Database did not become available in time."
