@@ -162,6 +162,7 @@ class ProgMusix(GeneralPage):
 
     def contact_send_btm(self):
         return WebDriverWait(self.browser, 10).until(EC.visibility_of_element_located((By.XPATH,'//button[@type="submit"]')))
+        
     def contact_msg_succ(self):
         return WebDriverWait(self.browser, 5).until(EC.visibility_of_element_located((By.XPATH,'//div[@class="mat-dialog-content"]'))).text
 
@@ -194,8 +195,8 @@ class ProgMusix(GeneralPage):
             database="webshop"
         )
         cursor = connection.cursor()
-        cursor.execute("SELECT * FROM message ORDER BY id DESC LIMIT 1")
-        return cursor.fetchone()
+        cursor.execute("SELECT * FROM message")
+        return cursor.fethcall()
 
 
     def last_user_sql(self):
