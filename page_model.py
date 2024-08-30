@@ -196,7 +196,7 @@ class ProgMusix(GeneralPage):
         )
         cursor = connection.cursor()
         cursor.execute("SELECT * FROM message")
-        return cursor.fethcall()
+        return cursor.fethall()
 
 
     def last_user_sql(self):
