@@ -43,7 +43,7 @@ class TestProgmusix:
         self.page.contact_email().send_keys(TESTDATA['contact_email'])
         self.page.contact_field().send_keys(TESTDATA['contact_field'])
         self.page.contact_send_btm().click()
-        time.sleep(10)
+        time.sleep(1)
         #Egyezik, megjelenik az adatbázisban a beírt név, email cím, üzenet szövege:
         assert all(field in self.page.last_msg_sql()[0] for field in [TESTDATA['contact_name'], TESTDATA['contact_email'], TESTDATA['contact_field']])
 
@@ -51,15 +51,7 @@ class TestProgmusix:
         url = "http://localhost:8080/api/categories"
         payload = {}
         headers = {}
-
-        for i in range(10):
-            response = requests.request("GET", url, headers=headers, data=payload)
-            print(f"Attempt {i + 1}: Status code: {response.status_code}, Response: {response.text}")
-            if response.status_code == 200:
-                break
-            time.sleep(30)
-
-        assert response.status_code == 200, "Failed to get a successful response from the backend."
+        response = requests.request("GET", url, headers=headers, data=payload)
         assert response.text == TESTDATA['Postman_categories']
 
 
