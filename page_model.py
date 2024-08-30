@@ -149,7 +149,7 @@ class ProgMusix(GeneralPage):
 
 #Contact
     def contact_btn(self):
-        return self.browser.find_element(By.ID,'button_location')
+        return WebDriverWait(self.browser,5).until(EC.visibility_of_element_located((By.ID,'button_location')))
 
     def contact_name(self):
         return self.browser.find_element(By.ID,'mat-input-0')
