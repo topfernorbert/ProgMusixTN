@@ -33,6 +33,19 @@ class TestProgmusix:
         assert self.page.checkers_password().is_displayed()
         assert self.page.dif_password_againg_msg().text == TESTDATA['negative_password_again_msg']
 
+    def test_reg_positive(self):
+        self.page.registration_method()
+        self.page.new_tab_email()
+        #Helyesen lettek kitöltve az adatok, elérhető a regisztrációs gomb:
+        assert self.page.register_btn().is_enabled()
+        #Regisztráció megerősítő üzenet megjelenik:
+        assert self.page.succesfull_msg() == TESTDATA['succesful_msg']
+        #Adatbázisban is megjelenik a regisztráció:
+        assert TESTDATA['email_p'] and TESTDATA['username_p'] in self.page.last_user_sql()
+        #Regisztrációs e-mail ellenőrzése:
+        self.page.new_tab_email()
+        assert self.page.current_url() == TESTDATA["ProgMusix_URL"]
+
     def test_contact(self):
         self.page.contact_btn().click()
         self.page.map_icon().click()
@@ -45,13 +58,20 @@ class TestProgmusix:
         #Egyezik, megjelenik az adatbázisban a beírt név, email cím, üzenet szövege:
         assert TESTDATA['contact_email'] and TESTDATA['contact_field'] and TESTDATA['contact_name'] in self.page.last_msg_sql()
 
-    # def test_categories(self):
-    #     url = "http://localhost:8080/api/categories"
-    #     payload = {}
-    #     headers = {}
-    #     response = requests.request("GET", url, headers=headers, data=payload)
-    #     assert response.text == TESTDATA['Postman_categories']
-    #     print(response.text)
+    def test_login_positive(self):
+        self.page.login_method_p()
+        #A belépéshez szükséges gomb engedélyezve van-e:
+        assert self.page.login_btn().is_enabled()
+
+    def test_login_negative_and_TAB(self):
+        self.page.login_method_TAB_n()
+        #Megjelennek-e az adatbekérő üzenetek, ha üresen maradnak a mezők:
+        assert self.page.negative_username_login_msg().is_displayed()
+        assert self.page.negative_password_login_msg().is_displayed()
+        self.page.login_method_n()
+        #Rossz email cím/jelszó megjelenése:
+        assert self.page.negative_login_msg() == TESTDATA['negative_login_msg']
+
 
 
 
