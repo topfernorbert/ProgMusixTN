@@ -3,6 +3,7 @@ from page_model import ProgMusix
 from configs.testdata import TESTDATA
 import requests
 import json
+import time
 
 class TestProgmusix:
     def setup_method(self):
@@ -55,8 +56,9 @@ class TestProgmusix:
         self.page.contact_email().send_keys(TESTDATA['contact_email'])
         self.page.contact_field().send_keys(TESTDATA['contact_field'])
         self.page.contact_send_btm().click()
+        time.sleep(10)
         #Egyezik, megjelenik az adatbázisban a beírt név, email cím, üzenet szövege:
-        assert TESTDATA['contact_email'] and TESTDATA['contact_field'] and TESTDATA['contact_name'] in self.page.last_msg_sql()
+        assert all(field in self.page.last_msg_sql()[0] for field in [TESTDATA['contact_name'], TESTDATA['contact_email'], TESTDATA['contact_field']])
 
     def test_login_positive(self):
         self.page.login_method_p()
