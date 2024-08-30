@@ -48,17 +48,19 @@ class TestProgmusix:
         assert all(field in self.page.last_msg_sql()[0] for field in [TESTDATA['contact_name'], TESTDATA['contact_email'], TESTDATA['contact_field']])
 
     def test_categories(self):
-        url = "http://localhost:8080/api/categories"
-        payload = {}
-        headers = {}
-        for i in range(10):
-            response = requests.request("GET", url, headers=headers, data=payload)
-            if response.status_code == 200:
-                break
-            time.sleep(10)
-            
-        assert response.status_code == 200, "Failed to get a successful response from the backend."
-        assert response.text == TESTDATA['Postman_categories']
+    url = "http://localhost:8080/api/categories"
+    payload = {}
+    headers = {}
+
+    for i in range(10):
+        response = requests.request("GET", url, headers=headers, data=payload)
+        print(f"Attempt {i+1}: Status code: {response.status_code}, Response: {response.text}")
+        if response.status_code == 200:
+            break
+        time.sleep(30)
+
+    assert response.status_code == 200, "Failed to get a successful response from the backend."
+    assert response.text == TESTDATA['Postman_categories']
 
 
 
