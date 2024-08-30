@@ -7,12 +7,42 @@ on:
 permissions:
   contents: write
   
-env:
-  MYSQL_DATABASE: webshop
-  MYSQL_USER: root
-  MYSQL_PASSWORD: test1234
-  MYSQL_HOST: localhost
-  NODE_ENV: test
+services:
+  frontend:
+    image: lenartl/webshop-frontend:sprint-1
+    ports:
+      - "4200:4200"
+    depends_on:
+      - backend
+      
+  backend:
+    image: lenartl/webshop-backend:sprint-1
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_USER=ProgmastersTN
+      - DB_PASSWORD=test1234!
+    depends_on:
+      - mysql
+      
+  mysql:
+    image: mysql:8.0.36
+    environment:
+      MYSQL_ROOT_PASSWORD: test1234
+      MYSQL_DATABASE: webshop
+      MYSQL_USER: ProgmastersTN
+      MYSQL_PASSWORD: test1234!
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 5s
+  
 
 jobs:
   build:
