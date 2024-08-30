@@ -51,10 +51,15 @@ class TestProgmusix:
         url = "http://localhost:8080/api/categories"
         payload = {}
         headers = {}
-        response = requests.request("GET", url, headers=headers, data=payload)
-        time.sleep(10)
+        for i in range(10):
+            response = requests.request("GET", url, headers=headers, data=payload)
+            if response.status_code == 200:
+                break
+            time.sleep(10)
+            
+        assert response.status_code == 200, "Failed to get a successful response from the backend."
         assert response.text == TESTDATA['Postman_categories']
-        print(response.text)
+
 
 
 
