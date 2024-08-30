@@ -52,6 +52,7 @@ class TestProgmusix:
         payload = {}
         headers = {}
         response = requests.request("GET", url, headers=headers, data=payload)
+        time.sleep(10)
         assert response.text == TESTDATA['Postman_categories']
         print(response.text)
 
