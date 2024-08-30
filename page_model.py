@@ -200,7 +200,7 @@ class ProgMusix(GeneralPage):
             database="webshop"
         )
         cursor = connection.cursor()
-        cursor.execute("SELECT email, message, user FROM message ORDER BY id DESC LIMIT 1")
+        cursor.execute("SELECT email, message, name FROM message ORDER BY id DESC LIMIT 1")
         return cursor.fetchall()
 
 
