@@ -15,9 +15,6 @@ services:
       test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
       timeout: 20s
       retries: 5
-      
-    volumes:
-      db_data:
 
   backend:
     image: lenartl/webshop-backend:sprint-1
