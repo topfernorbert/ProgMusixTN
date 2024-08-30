@@ -31,7 +31,7 @@ class TestProgmusix:
         assert self.page.invalid_username_msg() == TESTDATA['negative_username_msg']
         assert self.page.invalid_password_msg() == TESTDATA['negative_password_msg']
         assert self.page.checkers_password().is_displayed()
-        assert self.page.dif_password_againg_msg() == TESTDATA['negative_password_again_msg']
+        assert self.page.dif_password_againg_msg().text == TESTDATA['negative_password_again_msg']
 
     def test_contact(self):
         self.page.contact_btn().click()
