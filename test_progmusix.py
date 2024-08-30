@@ -45,7 +45,7 @@ class TestProgmusix:
         self.page.contact_send_btm().click()
         time.sleep(10)
         #Egyezik, megjelenik az adatbázisban a beírt név, email cím, üzenet szövege:
-        assert TESTDATA['contact_email'] and TESTDATA['contact_field'] and TESTDATA['contact_name'] in self.page.last_msg_sql()
+        assert all(field in self.page.last_msg_sql[0] for field in [TESTDATA['contact_name'], TESTDATA['contact_email'], TESTDATA['contact_field']])
 
     # def test_categories(self):
     #     url = "http://localhost:8080/api/categories"
