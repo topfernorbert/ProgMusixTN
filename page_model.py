@@ -206,7 +206,7 @@ class ProgMusix(GeneralPage):
 
     def last_user_sql(self):
         connection = mysql.connector.connect(
-            host="localhost",
+            host="database",
             port=3306,
             user="root",
             password="test1234",
