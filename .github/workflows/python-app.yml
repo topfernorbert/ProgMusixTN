@@ -30,6 +30,7 @@ jobs:
         env:
           MYSQL_USERNAME: ProgmastersTN
           MYSQL_PASSWORD: test1234!
+          MYSQL_ROOT_PASSWORD: test1234
           MYSQL_DATABASE: webshop
         ports:
           - 3306:3306
