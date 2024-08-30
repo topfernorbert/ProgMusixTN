@@ -2,75 +2,35 @@ name: Python application
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 permissions:
   contents: write
-  
-services:
-  frontend:
-    image: lenartl/webshop-frontend:sprint-1
-    ports:
-      - "4200:4200"
-    depends_on:
-      - backend
-      
-  backend:
-    image: lenartl/webshop-backend:sprint-1
-    ports:
-      - "8080:8080"
-    environment:
-      - DB_HOST=mysql
-      - DB_PORT=3306
-      - DB_USER=ProgmastersTN
-      - DB_PASSWORD=test1234!
-    depends_on:
-      - mysql
-      
-  mysql:
-    image: mysql:8.0.36
-    environment:
-      MYSQL_ROOT_PASSWORD: test1234
-      MYSQL_DATABASE: webshop
-      MYSQL_USER: ProgmastersTN
-      MYSQL_PASSWORD: test1234!
-    ports:
-      - "3306:3306"
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 10s
-      retries: 5
-      start_period: 30s
-      timeout: 5s
-  
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: node:14.5.0-alpine
+
     services:
-      mysql-master:
-        image: mysql:5.7
+      backend:
+        image: lenartl/webshop-backend:sprint-1
         ports:
-          - 3306/tcp
+          - 8080:8080
+      frontend:
+        image: lenartl/webshop-frontend:sprint-1
+        ports:
+          - 4200:4200
+      mysql:
+        image: mysql:8.0.36
         env:
-          MYSQL_DATABASE: ${{ env.MYSQL_DATABASE }}
-          MYSQL_USER: ${{ env.MYSQL_USER }}
-          MYSQL_PASSWORD: ${{ env.MYSQL_PASSWORD }}
-          MYSQL_ROOT_PASSWORD: ${{ env.MYSQL_PASSWORD }}
-        options: >-
-          --name=mysql-master
-          --health-cmd="mysqladmin ping"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=3 
-      
+          MYSQL_ROOT_PASSWORD: test1234
+          MYSQL_DATABASE: webshop
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping --silent" --health-interval=10s --health-timeout=5s --health-retries=3
+
     steps:
     - uses: actions/checkout@v4
-
-    - name: Install packages
-        run: "npm ci"
 
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
@@ -88,90 +48,14 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
-
-
-
-
-
-        
-
-    # - name: Set up Docker
-    #   uses: docker/setup-buildx-action@v2
-      
-    # - name: Start all containers
-    #   run: |
-    #     docker run -d --name frontend -p 4200:4200 lenartl/webshop-frontend:sprint-1
-    #     docker run -d --name backend -p 8080:8080 lenartl/webshop-backend:sprint-1
-    #     docker run -d --name database -e MYSQL_ROOT_PASSWORD=test1234 -e MYSQL_DATABASE=webshop -p 3306:3306 mysql:8.0.36
-        
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
-
-    - name: Check containes status
-      run: |
-        sleep 10
-        docker ps -a --filter name=mysql-container
-        docker ps -a --filter name=frontend-container
-        docker ps -a --filter name=backend-container
-
-        
-
-    - name: Check running containers
-      run: |
-        docker ps --format "{{.Names}}"
-
-    - name: Verify containers are running
-      run: |
-          containers="mysql-container frontend-container backend-container"
-          for name in $containers; do
-            if [ -n "$(docker ps -q -f name=$name)" ]; then
-              echo "Container with name $name is running."
-            else
-              echo "Container with name $name is not running." && exit 1
-            fi
-          done
-      
-    - name: Check connection to backend container
-      run: |
-          sleep 10
-          docker exec backend curl -sSf http://localhost:8080 || exit 1
-
-
-
-    - name: Test Backend Service
-      run: |
-        docker exec backend curl -I http://localhost:8080/api/categories
-        
-    - name: Test MySQL Service
-      run: |
-        docker exec database -uroot -ptest1234 -e "SHOW DATABASES;"
-
-    # - name: Run tests inside container
-    #   run: |
-    #     docker exec backend curl -I http://backend:8080/api/categories
-
-    # - name: Install Newman
-    #   run: npm install -g newman
-
-    # - name: Check Localhost Service
-    #   run: |
-    #     curl -I http://localhost:8080/api/categories
-
-    # - name: Run Postman Tests
-    #   run: |
-    #     newman run ./Postman/postman_collection.json \
-    #     --environment ./Postman/postman_environment.json \
-    #     --reporters cli,junit \
-    #     --reporter-junit-export postman-results.xml
-
     - name: Test with pytest
       env:
         FRONTEND_URL: http://localhost:4200
         BACKEND_URL: http://localhost:8080
         host: localhost
         port: 3306
-        user: root
-        password: test1234
+        user: ProgmastersTN
+        password: test1234!
         database: webshop
       run: |
         pytest --alluredir=allure-results
