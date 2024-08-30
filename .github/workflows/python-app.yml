@@ -59,7 +59,7 @@ jobs:
 
     - name: List database tables
       run: |
-        docker exec -i database -u root -ptest1234 -e "SHOW TABLES;" webshop
+        docker exec -i database mysql -u root -ptest1234 -e "SHOW TABLES;" webshop
 
         
     - name: Test with pytest
