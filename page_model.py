@@ -191,7 +191,7 @@ class ProgMusix(GeneralPage):
 
 #Database:
 
-    def last_msg(self):
+    def last_msg_sql(self):
         connection = mysql.connector.connect(
             host="localhost",
             port=3306,
