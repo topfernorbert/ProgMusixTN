@@ -152,13 +152,16 @@ class ProgMusix(GeneralPage):
         return WebDriverWait(self.browser,10).until(EC.visibility_of_element_located((By.ID,'button_location')))
 
     def contact_name(self):
-        return self.browser.find_element(By.ID,'mat-input-0')
+        return WebDriverWait(self.browser, 10).until(EC.visibility_of_element_located((By.ID, 'mat-input-0')))
+
     def contact_email(self):
-        return self.browser.find_element(By.ID,'mat-input-1')
+        return WebDriverWait(self.browser, 10).until(EC.visibility_of_element_located((By.ID, 'mat-input-1')))
+
     def contact_field(self):
-        return self.browser.find_element(By.ID,'mat-input-2')
+        return WebDriverWait(self.browser, 10).until(EC.visibility_of_element_located((By.ID, 'mat-input-2')))
+
     def contact_send_btm(self):
-        return self.browser.find_element(By.XPATH,'//button[@type="submit"]')
+        return WebDriverWait(self.browser, 10).until(EC.visibility_of_element_located((By.XPATH,'//button[@type="submit"]')))
     def contact_msg_succ(self):
         return WebDriverWait(self.browser, 5).until(EC.visibility_of_element_located((By.XPATH,'//div[@class="mat-dialog-content"]'))).text
 
