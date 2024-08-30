@@ -35,42 +35,25 @@ jobs:
       run: |
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-      
 
-    - name: Pull Docker images
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Install Docker Compose
       run: |
-          docker pull lenartl/webshop-backend:sprint-1
-          docker pull lenartl/webshop-frontend:sprint-1
-          docker pull mysql:8.0.36
-
-    - name: Run Docker containers
+        sudo curl -L "https://github.com/docker/compose/releases/download/v2.18.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        sudo chmod +x /usr/local/bin/docker-compose
+        
+    - name: Build and run Docker Compose services
       run: |
-          docker run -d --name database -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=mydb mysql:8.0.36 && \
-          docker run -d --name backend -p 8080:8080 lenartl/webshop-backend:sprint-1 && \
-          docker run -d --name frontend -p 4200:4200 lenartl/webshop-frontend:sprint-1
+        docker-compose -f compose.yaml up -d
+        docker-compose -f compose.yaml ps
 
-
-    # - name: Run MySQL container
-    #   run: |
-    #       docker run -d --name mysql-container \
-    #         -e MYSQL_ROOT_PASSWORD=root \
-    #         -e MYSQL_DATABASE=mydb \
-    #         mysql:8.0.36
-
-    # - name: Run Backend container
-    #   run: |
-    #       docker run -d --name backend-container \
-    #         -p 8080:8080 \
-    #         lenartl/webshop-backend:sprint-1
-
-    # - name: Run Frontend container
-    #   run: |
-    #       docker run -d --name frontend-container \
-    #         -p 4200:4200 \
-    #         lenartl/webshop-frontend:sprint-1
-
+    - name: Wait for services to be ready
+      run: sleep 30
+  
     - name: Check running containers
-      run: docker ps
+      run: docker-compose -f compose.yaml ps
 
 
     - name: Check running containers
@@ -82,7 +65,7 @@ jobs:
       env:
         FRONTEND_URL: http://localhost:4200
         BACKEND_URL: http://localhost:8080
-        DATABASE_HOST: localhost
+        DATABASE_HOST: database
         DATABASE_PORT: 3306
         DATABASE_USER: root
         DATABASE_PASSWORD: test1234
