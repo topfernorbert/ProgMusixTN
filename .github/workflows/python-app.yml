@@ -46,12 +46,12 @@ jobs:
     - name: Check running containers
       run: docker-compose -f compose.yaml ps
 
-    - name: Install Newman CLI
+    - name: Install Newman
       run: npm install -g newman
 
-    - name: Run Postman Tests
+    - name: Run Postman tests
       run: |
-        newman run postman_collection.json -e postman_environment.json 
+        npx newman run Postman/postman_collection.json -e Postman/postman_environment.json 
         
     - name: Test with pytest
       env:
