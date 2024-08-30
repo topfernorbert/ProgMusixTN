@@ -70,9 +70,6 @@ jobs:
       run: |
         docker ps --format "{{.Names}}"
 
-    - name: Check1 running containers
-      run: |
-        docker ps --filter 'status=running'
         
     - name: Test with pytest
       env:
