@@ -191,17 +191,49 @@ class ProgMusix(GeneralPage):
 
 #Database:
 
-    def last_msg_sql(self):
-        connection = mysql.connector.connect(
-            host="localhost",
-            port=3306,
-            user="root",
-            password="test1234",
-            database="webshop"
-        )
-        cursor = connection.cursor()
-        cursor.execute("SELECT email, message, name FROM message ORDER BY id DESC LIMIT 1")
-        return cursor.fetchone()
+    def wait_for_db(host, port, user, password, database, timeout=60, interval=5):
+    start_time = time.time()
+    while time.time() - start_time < timeout:
+        try:
+            connection = mysql.connector.connect(
+                host=host,
+                port=port,
+                user=user,
+                password=password,
+                database=database
+            )
+            if connection.is_connected():
+                connection.close()
+                return True
+        except Error:
+            pass
+        time.sleep(interval)
+    return False
+
+    def last_msg_sql():
+    host = "localhost"
+    port = 3306
+    user = "root"
+    password = "test1234"
+    database = "webshop"
+    
+    if wait_for_db(host, port, user, password, database):
+        try:
+            connection = mysql.connector.connect(
+                host=host,
+                port=port,
+                user=user,
+                password=password,
+                database=database
+            )
+            cursor = connection.cursor()
+            cursor.execute("SELECT email, message, name FROM message ORDER BY id DESC LIMIT 1")
+            result = cursor.fetchone()
+            connection.close()
+            return result
+        except Error:
+            return None
+    return None
 
 
     def last_user_sql(self):
