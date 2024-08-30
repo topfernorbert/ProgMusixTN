@@ -6,13 +6,41 @@ on:
 
 permissions:
   contents: write
+  
+env:
+  MYSQL_DATABASE: webshop
+  MYSQL_USER: root
+  MYSQL_PASSWORD: test1234
+  MYSQL_HOST: localhost
+  NODE_ENV: test
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: node:14.5.0-alpine
+    services:
+      mysql-master:
+        image: mysql:5.7
+        ports:
+          - 3306/tcp
+        env:
+          MYSQL_DATABASE: ${{ env.MYSQL_DATABASE }}
+          MYSQL_USER: ${{ env.MYSQL_USER }}
+          MYSQL_PASSWORD: ${{ env.MYSQL_PASSWORD }}
+          MYSQL_ROOT_PASSWORD: ${{ env.MYSQL_PASSWORD }}
+        options: >-
+          --name=mysql-master
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3 
       
     steps:
     - uses: actions/checkout@v4
+
+    - name: Install packages
+        run: "npm ci"
 
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
@@ -30,17 +58,12 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
-    - name: Run MySQL container
-      run: |
-          docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=mydb -d mysql:8.0.36
 
-    - name: Run Frontend container
-      run: |
-          docker run --name frontend-container --link mysql-container:db -d lenartl/webshop-frontend:sprint-1
 
-    - name: Run Backend container
-      run: |
-          docker run --name backend-container --link mysql-container:db -d lenartl/webshop-backend:sprint-1
+
+
+
+        
 
     # - name: Set up Docker
     #   uses: docker/setup-buildx-action@v2
