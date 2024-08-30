@@ -42,15 +42,17 @@ class ProgMusix(GeneralPage):
 
 #Login/Registration page
     def btn_signin(self):
-        return self.browser.find_element(By.XPATH, '//button[@class="sign_in"]')
+        return WebDriverWait(self.browser, 5).until(EC.visibility_of_element_located((By.XPATH, '//button[@class="sign_in"]')))
 
     def btn_createaccount(self):
-        return self.browser.find_element(By.XPATH, '//button[@class="create_account"]')
+        return WebDriverWait(self.browser, 5).until(EC.visibility_of_element_located((By.XPATH, '//button[@class="create_account"]')))
+
 
         # Login oldal - Bejelentkezés
 
     def login_btn(self):
-        return self.browser.find_element(By.XPATH, '//button[@type="submit"]')
+        return WebDriverWait(self.browser, 5).until(EC.visibility_of_element_located((By.XPATH, '//button[@type="submit"]')))
+
 
 #Signing in:
 
@@ -63,10 +65,11 @@ class ProgMusix(GeneralPage):
 #Signing in, negative:
 
     def negative_username_login_msg(self):
-        return self.browser.find_element(By.ID,'mat-form-field-label-1')
+        return WebDriverWait(self.browser, 5).until(EC.visibility_of_element_located((By.ID,'mat-form-field-label-1')))
 
     def negative_password_login_msg(self):
-        return self.browser.find_element(By.ID,'mat-form-field-label-3')
+        return WebDriverWait(self.browser, 5).until(EC.visibility_of_element_located((By.ID,'mat-form-field-label-3')))
+
 
     def negative_login_msg(self):
         return WebDriverWait(self.browser, 5).until(EC.visibility_of_element_located((By.ID,'mat-error-0'))).text
@@ -74,7 +77,7 @@ class ProgMusix(GeneralPage):
 #Regisztráció, pozitív ág:
 
     def create_btn(self):
-        return self.browser.find_element(By.XPATH, '//button[@class="create_account"]')
+        return WebDriverWait(self.browser, 5).until(EC.visibility_of_element_located((By.XPATH, '//button[@class="create_account"]')))
 
     def email(self):
         return WebDriverWait(self.browser, 5).until(EC.visibility_of_element_located((By.ID, 'mat-input-2')))
@@ -100,34 +103,36 @@ class ProgMusix(GeneralPage):
 #Regisztráció, negatív ág:
 
     def enter_email(self):
-        return self.browser.find_element(By.ID,'mat-form-field-label-5')
+        return WebDriverWait(self.browser, 5).until(EC.visibility_of_element_located((By.ID,'mat-form-field-label-5')))
 
     def invalid_email_msg(self):
         return WebDriverWait(self.browser,5).until(EC.visibility_of_element_located((By.ID,'mat-error-0'))).text
 
     def enter_username(self):
-        return self.browser.find_element(By.ID,'mat-form-field-label-7')
+        return WebDriverWait(self.browser, 5).until(EC.visibility_of_element_located((By.ID,'mat-form-field-label-7')))
+
 
     def invalid_username_msg(self):
         return WebDriverWait(self.browser,5).until(EC.visibility_of_element_located((By.ID,'mat-error-1'))).text
 
     def enter_password(self):
-        return self.browser.find_element(By.ID,'mat-form-field-label-9')
+        return WebDriverWait(self.browser, 5).until(EC.visibility_of_element_located((By.ID,'mat-form-field-label-9')))
 
     def invalid_password_msg(self):
         return WebDriverWait(self.browser,5).until(EC.visibility_of_element_located((By.ID,'mat-error-2'))).text
 
     def enter_password_again(self):
-        return self.browser.find_element(By.ID,'mat-form-field-label-11')
+        return WebDriverWait(self.browser, 5).until(EC.visibility_of_element_located((By.ID,'mat-form-field-label-11')))
 
     def tab_password_again_msg(self):
         return WebDriverWait(self.browser,5).until(EC.visibility_of_element_located((By.ID,'mat-error-3'))).text
 
     def dif_password_againg_msg(self):
-        return self.browser.find_element(By.ID,'mat-error-3').text
+        return WebDriverWait(self.browser, 5).until(EC.visibility_of_element_located((By.ID,'mat-error-3')))
 
     def disabled_submit_btn(self):
         return self.browser.find_element(By.XPATH,'//button[@type="submit"]').get_attribute("disabled")
+
 
     def checkers_password(self):
         return self.browser.find_element(By.ID,'checkers')
