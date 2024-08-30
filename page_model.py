@@ -184,7 +184,7 @@ class ProgMusix(GeneralPage):
 
     def last_msg(self):
         connection = mysql.connector.connect(
-            host="mysql-container",
+            host="database",
             port=3306,
             user="root",
             password="test1234",
