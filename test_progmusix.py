@@ -48,7 +48,7 @@ class TestProgmusix:
         assert all(field in self.page.last_msg_sql()[0] for field in [TESTDATA['contact_name'], TESTDATA['contact_email'], TESTDATA['contact_field']])
 
     def test_categories(self):
-        url = "http://localhost:8080/api/categories"
+        url = "http://backend:8080/api/categories"
         payload = {}
         headers = {}
         response = requests.request("GET", url, headers=headers, data=payload, timeout=5)
