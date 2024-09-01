@@ -134,9 +134,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/api/messages",
+							"raw": "http://localhost:8080/api/messages",
 							"host": [
-								"{{baseUrl}}"
+								"http://localhost:8080"
 							],
 							"path": [
 								"api",
