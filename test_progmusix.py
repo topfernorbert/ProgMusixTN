@@ -48,10 +48,10 @@ class TestProgmusix:
         assert all(field in self.page.last_msg_sql()[0] for field in [TESTDATA['contact_name'], TESTDATA['contact_email'], TESTDATA['contact_field']])
 
     def test_categories(self):
-        url = "http://127.0.0.1:8080/api/categories"
+        url = "http://localhost:8080/api/categories"
         payload = {}
         headers = {}
-        response = requests.request("GET", url, headers=headers, data=payload, timeout=5)
+        response = requests.request("GET", url, headers=headers, data=payload)
         assert response.text == TESTDATA['Postman_categories'] 
 
 
