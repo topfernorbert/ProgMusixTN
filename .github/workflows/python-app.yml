@@ -42,12 +42,12 @@ jobs:
       run: |
         docker-compose -f compose.yaml up -d
         docker-compose -f compose.yaml ps
-
-    - name: Wait for services to be healthy
-      run: sleep 50
   
     - name: Check running containers
       run: docker-compose -f compose.yaml ps
+
+    - name: Check backend container logs
+      run: docker logs backend
 
     - name: Install Newman
       run: npm install -g newman@latest
