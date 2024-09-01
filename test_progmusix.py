@@ -43,7 +43,7 @@ class TestProgmusix:
         self.page.contact_email().send_keys(TESTDATA['contact_email'])
         self.page.contact_field().send_keys(TESTDATA['contact_field'])
         self.page.contact_send_btm().click()
-        time.sleep(10)
+        time.sleep(1)
         #Egyezik, megjelenik az adatbázisban a beírt név, email cím, üzenet szövege:
         assert all(field in self.page.last_msg_sql()[0] for field in [TESTDATA['contact_name'], TESTDATA['contact_email'], TESTDATA['contact_field']])
 
@@ -51,10 +51,8 @@ class TestProgmusix:
         url = "http://127.0.0.1:8080/api/categories"
         payload = {}
         headers = {}
-        response = requests.request("GET", url, headers=headers, data=payload)
-        time.sleep(10)
-        assert response.text == TESTDATA['Postman_categories']
-        print(response.text)
+        response = requests.request("GET", url, headers=headers, data=payload, timeout=5)
+        assert response.text == TESTDATA['Postman_categories'] 
 
 
 
