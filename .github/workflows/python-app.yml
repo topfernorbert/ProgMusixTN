@@ -13,24 +13,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
-    services:
-      backend:
-        image: lenartl/webshop-backend:sprint-1
-        ports:
-          - 8080:8080
-      frontend:
-        image: lenartl/webshop-frontend:sprint-1
-        ports:
-          - 4200:4200
-      mysql:
-        image: mysql:8.0
-        env:
-          MYSQL_ROOT_PASSWORD: test1234
-          MYSQL_DATABASE: webshop
-        ports:
-          - 3306:3306
-        options: --health-cmd="mysqladmin ping --silent" --health-interval=10s --health-timeout=5s --health-retries=3
     
     steps:
     - uses: actions/checkout@v4
@@ -60,6 +42,12 @@ jobs:
     #   run: |
     #     docker-compose -f compose.yaml up -d
     #     docker-compose -f compose.yaml ps
+
+    - name: Build Docker images
+      run: |
+          docker buildx build --platform linux/amd64,linux/arm64 -t my-frontend-image ./frontend
+          docker buildx build --platform linux/amd64,linux/arm64 -t my-backend-image ./backend
+          docker buildx build --platform linux/amd64,linux/arm64 -t my-mysql-image ./mysql
 
     
     - name: Check running containers
