@@ -52,7 +52,8 @@ class TestProgmusix:
         payload = {}
         headers = {}
         response = requests.request("GET", url, headers=headers, data=payload)
-        assert response.json() == TESTDATA['Postman_categories']
+        response_categories = response.text
+        assert response_categories == TESTDATA['Postman_categories']
 
 
 
