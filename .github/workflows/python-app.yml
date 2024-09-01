@@ -44,7 +44,7 @@ jobs:
         docker-compose -f compose.yaml ps
 
     - name: Wait for services to be healthy
-      run: sleep 30
+      run: sleep 50
   
     - name: Check running containers
       run: docker-compose -f compose.yaml ps
