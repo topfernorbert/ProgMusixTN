@@ -40,8 +40,8 @@ jobs:
         
     - name: Build and run Docker Compose
       run: |
-        docker-compose -f docker-compose.yml up -d
-        docker-compose -f docker-compose.yml ps
+        docker-compose -f compose.yml up -d
+        docker-compose -f compose.yml ps
 
     
     - name: Check running containers
