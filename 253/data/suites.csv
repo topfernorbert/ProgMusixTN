@@ -1,5 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Sun Sep 01 11:48:24 GMT 2024","Sun Sep 01 11:48:26 GMT 2024","1944","","test_progmusix","TestProgmusix","","","test_contact",""
-"failed","Sun Sep 01 11:48:27 GMT 2024","Sun Sep 01 11:48:27 GMT 2024","9","","test_progmusix","TestProgmusix","","","test_categories",""
-"passed","Sun Sep 01 11:48:23 GMT 2024","Sun Sep 01 11:48:24 GMT 2024","506","","test_progmusix","TestProgmusix","","","test_reg_negative",""
-"passed","Sun Sep 01 11:48:22 GMT 2024","Sun Sep 01 11:48:23 GMT 2024","502","","test_progmusix","TestProgmusix","","","test_reg_TAB",""
