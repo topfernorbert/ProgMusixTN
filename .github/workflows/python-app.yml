@@ -38,23 +38,10 @@ jobs:
         sudo curl -L "https://github.com/docker/compose/releases/download/v2.18.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         sudo chmod +x /usr/local/bin/docker-compose
         
-    # - name: Build and run Docker Compose services
-    #   run: |
-    #     docker-compose -f compose.yaml up -d
-    #     docker-compose -f compose.yaml ps
-
-    
-    - name: Pull Docker images
+    - name: Build and run Docker Compose
       run: |
-          docker pull lenartl/webshop-backend:sprint-1
-          docker pull lenartl/webshop-frontend:sprint-1
-          docker pull mysql:8.0.36
-
-    - name: Run Docker containers
-      run: |
-          docker run -d --name database -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=mydb mysql:8.0.36
-          docker run -d --name backend -p 8080:8080 lenartl/webshop-backend:sprint-1
-          docker run -d --name frontend -p 4200:4200 lenartl/webshop-frontend:sprint-1
+        docker-compose -f docker-compose.yml up -d
+        docker-compose -f docker-compose.yml ps
 
     
     - name: Check running containers
