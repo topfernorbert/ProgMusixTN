@@ -46,12 +46,8 @@ jobs:
     - name: Check running containers
       run: docker-compose -f compose.yaml ps
 
-    
-
-
-
     - name: Install Newman
-      run: npm install -g newman
+      run: npm install -g newman@latest
 
     - name: Run Postman tests
       run: |
