@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "db7db03f-e826-4e0a-b213-e4d73068cc50",
 		"name": "ProgMusix",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "34958965"
 	},
 	"item": [
@@ -23,16 +23,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{baseUrl}}/api/users",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"users"
-							]
-						}
+						"url": "{{baseUrl}}/api/users"
 					},
 					"response": []
 				},
@@ -97,16 +88,26 @@
 			"item": [
 				{
 					"name": "Message",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{Acess token}}",
-									"type": "string"
-								}
-							]
+							"bearer": {
+								"token": "{{Acess token}}"
+							}
 						},
 						"method": "POST",
 						"header": [],
@@ -119,16 +120,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{baseUrl}}/api/messages",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"messages"
-							]
-						}
+						"url": "{{baseUrl}}/api/messages"
 					},
 					"response": []
 				}
@@ -142,28 +134,13 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
+							"bearer": {
+								"token": "{{token}}"
+							}
 						},
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/api/users/token/refresh",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"users",
-								"token",
-								"refresh"
-							]
-						}
+						"url": "{{baseUrl}}/api/users/token/refresh"
 					},
 					"response": []
 				}
@@ -174,27 +151,13 @@
 			"request": {
 				"auth": {
 					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{Refresh token}}",
-							"type": "string"
-						}
-					]
+					"bearer": {
+						"token": "{{Refresh token}}"
+					}
 				},
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "{{baseUrl}}/api/users/userData",
-					"host": [
-						"{{baseUrl}}"
-					],
-					"path": [
-						"api",
-						"users",
-						"userData"
-					]
-				}
+				"url": "{{baseUrl}}/api/users/userData"
 			},
 			"response": []
 		},
@@ -203,35 +166,22 @@
 			"request": {
 				"auth": {
 					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJQcm9nTWFzdGVyc1ROIiwicm9sZXMiOlsiUk9MRV9DVVNUT01FUiJdLCJpc3MiOiIvYXBpL3VzZXJzL2xvZ2luIiwiZXhwIjoxNzI1MDExODAyfQ.cim6oi3JwISlSlgxstKXhADqSoRKQyxXTTTmh0bLQdc"
+					}
 				},
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Brendon\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Lófaszú baglyok\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": {
-					"raw": "{{baseUrl}}/api/categories",
-					"host": [
-						"{{baseUrl}}"
-					],
-					"path": [
-						"api",
-						"categories"
-					]
-				}
+				"url": "{{baseUrl}}/api/categories"
 			},
 			"response": []
 		},
@@ -240,18 +190,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/categories",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"categories"
-					]
-				}
+				"url": "http://localhost:8080/api/categories"
 			},
 			"response": []
 		},
@@ -260,17 +199,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "{{baseUrl}}/api/products/1",
-					"host": [
-						"{{baseUrl}}"
-					],
-					"path": [
-						"api",
-						"products",
-						"1"
-					]
-				}
+				"url": "{{baseUrl}}/api/products/1"
 			},
 			"response": []
 		},
@@ -279,13 +208,9 @@
 			"request": {
 				"auth": {
 					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{Acess token}}",
-							"type": "string"
-						}
-					]
+					"bearer": {
+						"token": "{{Acess token}}"
+					}
 				},
 				"method": "POST",
 				"header": [],
@@ -298,17 +223,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "{{baseUrl}}/api/ratings/1",
-					"host": [
-						"{{baseUrl}}"
-					],
-					"path": [
-						"api",
-						"ratings",
-						"1"
-					]
-				}
+				"url": "{{baseUrl}}/api/ratings/1"
 			},
 			"response": []
 		}
