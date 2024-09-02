@@ -72,7 +72,7 @@ jobs:
         DATABASE_PASSWORD: test1234
         DATABASE_NAME: webshop
       run: |
-        pytest --log-cli-level=INFO --log-cli-format='%(asctime)s - %(name)s - %(levelname)s - %(message)s' --alluredir=allure-results
+        pytest --log-cli-level=INFO --log-cli-format='%(asctime)s - %(name)s - %(levelname)s - %(message)s' --alluredir=allure-results > logs/pytest.log 2>&1
       continue-on-error: true
 
     - name: Upload pytest logs as artifacts
