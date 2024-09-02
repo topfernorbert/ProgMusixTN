@@ -48,7 +48,7 @@ class TestProgmusix:
         assert all(field in self.page.last_msg_sql()[0] for field in [TESTDATA['contact_name'], TESTDATA['contact_email'], TESTDATA['contact_field']])
 
     def test_get_categories():
-        esponse = requests.get("http://localhost:8080/api/categories/1")
+        response = requests.get("http://localhost:8080/api/categories/1")
         assert response.status_code == 200
         
     
