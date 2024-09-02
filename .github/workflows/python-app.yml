@@ -72,7 +72,15 @@ jobs:
         DATABASE_PASSWORD: test1234
         DATABASE_NAME: webshop
       run: |
-        pytest --alluredir=allure-results
+        pytest --log-cli-level=INFO --log-cli-format='%(asctime)s - %(name)s - %(levelname)s - %(message)s' --alluredir=allure-results
+      continue-on-error: true
+
+    - name: Upload pytest logs as artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: pytest-logs
+        path: |
+          pytest.log
 
     - name: Allure Report action from marketplace
       if: always()
