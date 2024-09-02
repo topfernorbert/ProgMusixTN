@@ -51,8 +51,7 @@ class TestProgmusix:
         url = "http://localhost:8080/api/categories/1"
         response = requests.get(url)
         assert response.status_code == 200
-        data = response.json()
-        print(data)
+        print(response.text)
         # assert data['name'] == "WOODWIND" 
 
 
