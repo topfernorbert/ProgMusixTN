@@ -59,7 +59,10 @@ jobs:
     - name: Run Postman tests
       run: |
         npx newman run Postman/postman_collection.json -e Postman/postman_environment.json 
-        
+
+    - name: Check running containers
+      run: docker-compose -f compose.yaml ps
+    
     - name: Test with pytest
       env:
         FRONTEND_URL: http://localhost:4200
