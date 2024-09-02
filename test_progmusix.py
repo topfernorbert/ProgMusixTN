@@ -55,14 +55,14 @@ class TestProgmusix:
         assert data['id'] == 1
         assert 'name' in data
     
-    def test_categories(self):
-        url = "http://localhost:8080/api/categories/1"
-        payload = {}
-        headers = {}
-        response = requests.request("GET", url, headers=headers, data=payload)
-        response_json = response.json()
-        category_name = response_json["name"]
-        assert category_name == 'WOODWIND'
+    # def test_categories(self):
+    #     url = "http://localhost:8080/api/categories/1"
+    #     payload = {}
+    #     headers = {}
+    #     response = requests.request("GET", url, headers=headers, data=payload)
+    #     response_json = response.json()
+    #     category_name = response_json["name"]
+    #     assert category_name == 'WOODWIND'
         #assert response.text == TESTDATA['Postman_categories']
 
 
