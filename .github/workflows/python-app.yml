@@ -43,6 +43,9 @@ jobs:
         docker-compose -f compose.yaml up -d
         docker-compose -f compose.yaml ps
 
+    - name: Wait for 30 seconds
+      run: sleep 30
+
     
     - name: Check running containers
       run: docker-compose -f compose.yaml ps
