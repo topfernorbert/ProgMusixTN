@@ -10,6 +10,12 @@ services:
       - MYSQL_ROOT_PASSWORD=test1234
     ports:
       - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 30s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
 
   backend:
     image: lenartl/webshop-backend:sprint-1
