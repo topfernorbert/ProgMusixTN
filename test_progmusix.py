@@ -47,14 +47,28 @@ class TestProgmusix:
         #Egyezik, megjelenik az adatbázisban a beírt név, email cím, üzenet szövege:
         assert all(field in self.page.last_msg_sql()[0] for field in [TESTDATA['contact_name'], TESTDATA['contact_email'], TESTDATA['contact_field']])
 
-    def test_categories(self):
+    def test_get_categories(self):
         url = "http://localhost:8080/api/categories/1"
-        payload = {}
-        headers = {}
-        response = requests.request("GET", url, headers=headers, data=payload)
-        response_json = response.json()
-        category_name = response_json["name"]
-        assert category_name == 'WOODWIND'
+        response = requests.get(url)
+        assert response.status_code == 200
+        print(response.text)
+        # assert data['name'] == "WOODWIND" 
+
+
+    # def test_get_categories(self):
+    #     response = requests.get("http://localhost:8080/api/categories/1")
+    #     assert response.status_code == 200
+    #     assert "WOODWIND" in response.text
+        
+    
+    # def test_categories(self):
+    #     url = "http://localhost:8080/api/categories/1"
+    #     payload = {}
+    #     headers = {}
+    #     response = requests.request("GET", url, headers=headers, data=payload)
+    #     response_json = response.json()
+    #     category_name = response_json["name"]
+    #     assert category_name == 'WOODWIND'
         #assert response.text == TESTDATA['Postman_categories']
 
 

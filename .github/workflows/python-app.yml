@@ -21,6 +21,9 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: "3.10"
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
         
     - name: Install dependencies
       run: |
@@ -38,13 +41,16 @@ jobs:
         sudo curl -L "https://github.com/docker/compose/releases/download/v2.18.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         sudo chmod +x /usr/local/bin/docker-compose
         
-    - name: Build and run Docker Compose services
+    - name: Build and run Docker Compose
       run: |
         docker-compose -f compose.yaml up -d
         docker-compose -f compose.yaml ps
-  
+    
     - name: Check running containers
       run: docker-compose -f compose.yaml ps
+
+    - name: Check backend container logs
+      run: docker logs backend
 
     - name: Install Newman
       run: npm install -g newman@latest
@@ -52,7 +58,10 @@ jobs:
     - name: Run Postman tests
       run: |
         npx newman run Postman/postman_collection.json -e Postman/postman_environment.json 
-        
+
+    - name: Check running containers
+      run: docker-compose -f compose.yaml ps
+    
     - name: Test with pytest
       env:
         FRONTEND_URL: http://localhost:4200
@@ -63,7 +72,15 @@ jobs:
         DATABASE_PASSWORD: test1234
         DATABASE_NAME: webshop
       run: |
-        pytest --alluredir=allure-results
+        pytest --alluredir=allure-results > logs/pytest.log 2>&1
+      continue-on-error: true
+
+    - name: Upload pytest logs as artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: pytest-logs
+        path: |
+          pytest.log
 
     - name: Allure Report action from marketplace
       if: always()

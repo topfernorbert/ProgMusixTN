@@ -1,5 +1,4 @@
 version: "3.9"
-
 services:
   database:
     image: mysql:8.0.36
@@ -11,9 +10,11 @@ services:
     ports:
       - "3306:3306"
     healthcheck:
-      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
-      timeout: 20s
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-ptest1234"]
+      interval: 30s
       retries: 5
+      start_period: 30s
+      timeout: 10s
 
   backend:
     image: lenartl/webshop-backend:sprint-1
@@ -25,12 +26,6 @@ services:
       - "8080:8080"
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://database:3306/webshop?serverTimezone=UTC&characterEncoding=utf8
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
-
   frontend:
     image: lenartl/webshop-frontend:sprint-1
     container_name: frontend
