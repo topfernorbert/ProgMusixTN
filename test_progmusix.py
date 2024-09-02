@@ -50,6 +50,7 @@ class TestProgmusix:
     def test_get_categories(self):
         response = requests.get("http://localhost:8080/api/categories/1")
         assert response.status_code == 200
+        assert "WOODWIND" in response.text
         
     
     # def test_categories(self):
