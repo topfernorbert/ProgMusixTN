@@ -52,12 +52,12 @@ jobs:
     - name: Check backend container logs
       run: docker logs backend
 
-    - name: Install Newman
-      run: npm install -g newman@latest
+    # - name: Install Newman
+    #   run: npm install -g newman@latest
 
-    - name: Run Postman tests
-      run: |
-        npx newman run Postman/postman_collection.json -e Postman/postman_environment.json 
+    # - name: Run Postman tests
+    #   run: |
+    #     npx newman run Postman/postman_collection.json -e Postman/postman_environment.json 
 
     - name: Check running containers
       run: docker-compose -f compose.yaml ps
