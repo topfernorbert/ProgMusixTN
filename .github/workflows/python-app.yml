@@ -72,8 +72,7 @@ jobs:
         DATABASE_PASSWORD: test1234
         DATABASE_NAME: webshop
       run: |
-        pytest --alluredir=allure-results > logs/pytest.log 2>&1
-      continue-on-error: true
+        pytest --alluredir=allure-results
 
     - name: Upload pytest logs as artifacts
       uses: actions/upload-artifact@v3
