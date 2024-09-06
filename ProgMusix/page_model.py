@@ -231,9 +231,9 @@ class ProgMusix(GeneralPage):
         )
         cursor = connection.cursor()
         connection.start_transaction()
-        cursor.execute("DELETE FROM confirmation_token WHERE custom_user_id > 3")
-        cursor.execute("DELETE FROM user_role WHERE custom_user_id > 3")
-        cursor.execute("DELETE FROM custom_user WHERE id > 3")
+        cursor.execute("DELETE FROM confirmation_token WHERE custom_user_id > 0")
+        cursor.execute("DELETE FROM user_role WHERE custom_user_id > 0")
+        cursor.execute("DELETE FROM custom_user WHERE id > 0")
         connection.commit()
 
     def change_admin_sql(self):
