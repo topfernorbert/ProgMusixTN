@@ -13,6 +13,19 @@ class TestProgmusix:
     def teardown_method(self):
         self.page.close()
 
+    def test_reg_positive(self):
+        self.page.registration_method()
+        self.page.new_tab_email()
+        # Helyesen lettek kitöltve az adatok, elérhető a regisztrációs gomb:
+        assert self.page.register_btn().is_enabled()
+        # Regisztráció megerősítő üzenet megjelenik:
+        assert self.page.succesfull_msg() == TESTDATA['succesful_msg']
+        # Adatbázisban is megjelenik a regisztráció:
+        assert TESTDATA['email_p'] and TESTDATA['username_p'] in self.page.last_user_sql()
+        # Regisztrációs e-mail ellenőrzése:
+        self.page.new_tab_email()
+        assert self.page.current_url() == TESTDATA["ProgMusix_URL"]
+
     def test_reg_TAB(self):
         self.page.reg_TAB_method()
         assert self.page.invalid_email_msg() == TESTDATA['TAB_email']
