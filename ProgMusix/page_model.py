@@ -240,13 +240,11 @@ class ProgMusix(GeneralPage):
 
     def registration_method(self):
         self.menu_login_btn().click()
-        time.sleep(1)
         self.create_btn().click()
         self.email().send_keys(TESTDATA['email_p'])
         self.username().send_keys(TESTDATA['username_p'])
         self.password().send_keys(TESTDATA['password_p'])
         self.password_again().send_keys(TESTDATA['password_p'])
-        time.sleep(3)
         self.register_btn().click()
 
     def registration(self):
@@ -382,12 +380,10 @@ class ProgMusix(GeneralPage):
         self.menu_cart().click()
         self.checkout_btn().click()
         self.btn_step2().click()
+        self.input_username().send_keys(TESTDATA['username_p'])
+        self.input_phonenumber().send_keys(TESTDATA['phone_p'])
+        self.btn_step2().click()
 
-        self.input_billing_name().clear()
-        self.input_billing_taxnumber().clear()
-        self.input_billing_zipnumber().clear()
-        self.input_billing_city().clear()
-        self.input_billing_address().clear()
         self.input_billing_name().send_keys(TESTDATA['contact_name'])
         self.input_billing_taxnumber().send_keys(TESTDATA['tax_p'])
         self.input_billing_zipnumber().send_keys(TESTDATA['zip_p'])
@@ -395,17 +391,12 @@ class ProgMusix(GeneralPage):
         self.input_billing_address().send_keys(TESTDATA['street_p'])
         self.btn_step3().click()
 
-        self.input_shipping_name().clear()
-        self.input_shipping_zipnumber().clear()
-        self.input_shipping_city().clear()
-        self.input_shipping_address().clear()
         self.input_shipping_name().send_keys(TESTDATA['contact_name'])
         self.input_shipping_zipnumber().send_keys(TESTDATA['zip_p'])
         self.input_shipping_city().send_keys(TESTDATA['city_p'])
         self.input_shipping_address().send_keys(TESTDATA['street_p'])
         self.btn_step4().click()
 
-        self.input_delivery_info().clear()
         self.input_delivery_info().send_keys(TESTDATA['delivery_p'])
         self.btn_step5().click()
         self.btn_sendorder().click()
