@@ -209,6 +209,18 @@ class ProgMusix(GeneralPage):
         cursor.execute("SELECT email, message, name FROM message ORDER BY id DESC LIMIT 1")
         return cursor.fetchall()
 
+    def last_user_sql(self):
+        connection = mysql.connector.connect(
+            host="localhost",
+            port=3306,
+            user="root",
+            password="test1234",
+            database="webshop"
+        )
+        cursor = connection.cursor()
+        cursor.execute("SELECT email, username FROM custom_user ORDER BY id DESC LIMIT 1")
+        return cursor.fetchone()
+
     def last_user_del_sql(self):
         connection = mysql.connector.connect(
             host="localhost",
