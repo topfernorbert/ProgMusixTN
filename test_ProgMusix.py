@@ -10,8 +10,8 @@ class TestProgmusix:
         self.page = page
         page.open()
 
-     def teardown_method(self):
-         self.page.close()
+    def teardown_method(self):
+        self.page.close()
 
     def test_registration(self):
         self.page.registration_method()
