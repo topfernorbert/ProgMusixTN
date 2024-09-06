@@ -10,8 +10,8 @@ class TestProgmusix:
         self.page = page
         page.open()
 
-    # def teardown_method(self):
-    #     self.page.close()
+     def teardown_method(self):
+         self.page.close()
 
     def test_registration(self):
         self.page.registration_method()
@@ -116,4 +116,9 @@ class TestProgmusix:
         #Kosárba helyezés:
         self.page.purchase_random_method()
         # Fizetés
-        self.page.paying_method()
+        self.page.paying_method()      
+    
+    def test_last_user_del(self):
+        self.page.last_user_del_sql()
+
+
