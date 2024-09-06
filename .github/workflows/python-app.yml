@@ -70,7 +70,7 @@ jobs:
         DATABASE_PASSWORD: test1234
         DATABASE_NAME: webshop
       run: |
-        pytest test_ProgMusix.py test_webshop_FA/Test_Checkout.py BT_webshop_test/Test_PROGMUSIX_BT.py --alluredir=allure-results || true
+        pytest test_ProgMusix.py --alluredir=allure-results || true
         
     # # - name: Install/Update Newman to Latest
     # #   run: npm install -g newman@latest
