@@ -1,0 +1,1 @@
+{"total":2,"items":[{"uid":"7f4d23c3dd1f83d89d950e467ea50e20","name":"test_ProgMusix","statistic":{"failed":0,"broken":1,"skipped":0,"passed":12,"unknown":0,"total":13}},{"uid":"e2f43ccb3b50855c31bab8ab03bdd43f","name":"test_progmusix","statistic":{"failed":0,"broken":0,"skipped":0,"passed":3,"unknown":0,"total":3}}]}
