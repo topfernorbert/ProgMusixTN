@@ -2,9 +2,9 @@ name: ProgMusix
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 permissions:
   contents: write
@@ -46,6 +46,20 @@ jobs:
     - name: Check running containers
       run: docker-compose -f compose.yaml ps
 
+    - name: Install MySQL client
+      run: sudo apt-get install mysql-client
+
+    - name: Wait for 10 seconds
+      run: sleep 10
+
+    - name: Copy init file to Docker container
+      run: |
+        docker cp init.sql database:/init.sql
+
+    - name: Load init.sql into MySQL database
+      run: |
+        docker-compose exec database mysql -u root -ptest1234 webshop < ./init.sql
+
     - name: Test with pytest
       env:
         FRONTEND_URL: http://localhost:4200
@@ -56,7 +70,7 @@ jobs:
         DATABASE_PASSWORD: test1234
         DATABASE_NAME: webshop
       run: |
-        pytest --alluredir=allure-results || true # A '||
+        pytest test_ProgMusix.py test_webshop_FA/Test_Checkout.py BT_webshop_test/Test_PROGMUSIX_BT.py --alluredir=allure-results || true
         
     # # - name: Install/Update Newman to Latest
     # #   run: npm install -g newman@latest
