@@ -378,10 +378,12 @@ class ProgMusix(GeneralPage):
         # self.login_method_p()
         self.menu_cart().click()
         self.checkout_btn().click()
-        self.input_username().clear()
-        self.input_email().clear()
-        self.input_phonenumber().clear()
-        time.sleep(3)
+        # self.input_username().clear()
+        # self.input_email().clear()
+        # self.input_phonenumber().clear()
+        # time.sleep(3)
+        self.clear_all_inputs()
+        time.sleep(1)
         self.input_username().send_keys(TESTDATA['username_p'])
         self.input_email().send_keys(TESTDATA['email_p'])
         self.input_phonenumber().send_keys(TESTDATA['phone_p'])
@@ -636,3 +638,10 @@ class ProgMusix(GeneralPage):
     def input_success_message(self):
         return WebDriverWait(self.browser, 15).until(
             EC.visibility_of_element_located((By.XPATH, '//div[@class="mat-dialog-content"]')))
+
+    def clear_all_inputs(self):
+        inputs = WebDriverWait(self.browser, 15).until(
+            EC.presence_of_all_elements_located((By.CSS_SELECTOR, 'input')))
+        for input_element in inputs:
+            input_element.clear()
+
