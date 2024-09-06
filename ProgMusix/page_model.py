@@ -378,16 +378,6 @@ class ProgMusix(GeneralPage):
         # self.login_method_p()
         self.menu_cart().click()
         self.checkout_btn().click()
-        self.input_username().sendKeys(Keys.chord(Keys.CONTROL, "a") + Keys.DELETE + TESTDATA["username_p"]);
-        self.input_email().clear()
-        self.input_phonenumber().clear()
-        self.clear_all_inputs()
-        time.sleep(3)
-        # self.input_username().send_keys(TESTDATA['username_p'])
-        time.sleep(3)
-        self.input_email().send_keys(TESTDATA['email_p'])
-        time.sleep(3)
-        self.input_phonenumber().send_keys(TESTDATA['phone_p'])
         self.btn_step2().click()
 
         self.input_billing_name().clear()
