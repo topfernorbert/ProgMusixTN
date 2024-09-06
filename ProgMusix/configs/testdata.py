@@ -1,6 +1,6 @@
 TESTDATA = {
-    "email_p": "progmasterstn@endtest-mail.io",
-    "username_p": "ProgMastersTN",
+    "email_p": "pm-tn@endtest-mail.io",
+    "username_p": "ProgMasters_TN_1",
     "password_p": "Test12345!",
     "succesful_msg": "The verification email has been sent to your email address, please verify your registration before log in",
     "negative_email": "nemkell.email.hu",
@@ -25,6 +25,5 @@ TESTDATA = {
     "contact_field": "Ez egy próba üzenet. ;)",
     "contact_msg_succ": "Your message has been sent.",
     "address": "Budapest, Irányi utca 3., 1056.",
-    "ProgMusix_URL": "http://localhost:4200/",
-    "Postman_categories": '[{"id":1,"name":"WOODWIND"},{"id":2,"name":"BRASS INSTRUMENTS"},{"id":3,"name":"PERCUSSION INSTRUMENTS"},{"id":4,"name":"KEYBOARD INSTRUMENTS"},{"id":5,"name":"GUITAR FAMILY"},{"id":6,"name":"BOWED STRINGS"},{"id":7,"name":"MISC"},{"id":14,"name":"TRADITIONAL"}]'
+    "ProgMusix_URL": "http://localhost:4200/"
 }
