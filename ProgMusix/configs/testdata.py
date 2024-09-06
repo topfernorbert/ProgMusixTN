@@ -25,5 +25,11 @@ TESTDATA = {
     "contact_field": "Ez egy próba üzenet. ;)",
     "contact_msg_succ": "Your message has been sent.",
     "address": "Budapest, Irányi utca 3., 1056.",
-    "ProgMusix_URL": "http://localhost:4200/"
+    "ProgMusix_URL": "http://localhost:4200/",
+    "tax_p": "1234",
+    "zip_p": "1142",
+    "city_p": "Budapest",
+    "street_p": "Irányi utca",
+    "delivery_p": "stom",
+    "phone_p": "06309786532"
 }

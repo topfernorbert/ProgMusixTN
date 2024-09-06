@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from random import randint
 
 class ProgMusix(GeneralPage):
 
@@ -315,8 +316,9 @@ class ProgMusix(GeneralPage):
 
     def login_method_p(self):
         self.menu_login_btn().click()
-        self.username_login().send_keys(TESTDATA['Login_username_p'])
-        self.password_login().send_keys(TESTDATA['Login_password_p'])
+        time.sleep(2)
+        self.username_login().send_keys(TESTDATA['username_p'])
+        self.password_login().send_keys(TESTDATA['password_p'])
         self.login_btn().click()
 
 
@@ -334,8 +336,302 @@ class ProgMusix(GeneralPage):
 
     def reg_email(self):
         self.browser.switch_to.new_window()
-        self.browser.get('https://app.endtest.io/mailbox?email=progmasters-test@endtest-mail.io')
+        self.browser.get('https://app.endtest.io/mailbox?email=pm-tn@endtest-mail.io')
         time.sleep(1)
         self.browser.refresh()
         time.sleep(3)
         self.email_link_last_email().click()
+
+# Vásárlással kapcsolatos műveletek:
+
+    def purchase_method(self):
+        self.menu_search().click()
+        self.product_card_1_addtocart().click()
+        self.product_card_3_addtocart().click()
+
+    def purchase_random_method(self):
+        self.menu_search().click()
+        random_counter = randint(1, 22)
+        time.sleep(2)
+        buttons = self.product_all_add_btn()
+        for i in range(min(random_counter, len(buttons))):
+            buttons[i].click()
+
+    def convert_method(self):
+        price_ints = []
+        for price_element in self.product_prices():
+            price_text = price_element.text
+            price_number = ''.join(filter(str.isdigit, price_text))
+            try:
+                elem_int = int(price_number)
+                price_ints.append(elem_int)
+            except ValueError:
+                print(f"Could not convert price text '{price_text}' to an integer.")
+        return price_ints
+
+    def add_method(self):
+        price_ints = self.convert_method()
+        total = sum(price_ints)
+        return total
+
+    def paying_method(self):
+        # self.login_method_p()
+        self.menu_cart().click()
+        self.checkout_btn().click()
+        self.input_username().clear()
+        self.input_username().send_keys(TESTDATA['username_p'])
+        self.input_email().clear()
+        self.input_email().send_keys(TESTDATA['email_p'])
+        self.input_phonenumber().clear()
+        self.input_phonenumber().send_keys(TESTDATA['phone_p'])
+        self.btn_step2().click()
+
+        self.input_billing_name().clear()
+        self.input_billing_taxnumber().clear()
+        self.input_billing_zipnumber().clear()
+        self.input_billing_city().clear()
+        self.input_billing_address().clear()
+        self.input_billing_name().send_keys(TESTDATA['contact_name'])
+        self.input_billing_taxnumber().send_keys(TESTDATA['tax_p'])
+        self.input_billing_zipnumber().send_keys(TESTDATA['zip_p'])
+        self.input_billing_city().send_keys(TESTDATA['city_p'])
+        self.input_billing_address().send_keys(TESTDATA['street_p'])
+        self.btn_step3().click()
+
+        self.input_shipping_name().clear()
+        self.input_shipping_zipnumber().clear()
+        self.input_shipping_city().clear()
+        self.input_shipping_address().clear()
+        self.input_shipping_name().send_keys(TESTDATA['contact_name'])
+        self.input_shipping_zipnumber().send_keys(TESTDATA['zip_p'])
+        self.input_shipping_city().send_keys(TESTDATA['city_p'])
+        self.input_shipping_address().send_keys(TESTDATA['street_p'])
+        self.btn_step4().click()
+
+        self.input_delivery_info().clear()
+        self.input_delivery_info().send_keys(TESTDATA['delivery_p'])
+        self.btn_step5().click()
+        self.btn_sendorder().click()
+
+
+
+    def paying_method_negative_01_short(self):
+        self.menu_cart().click()
+        self.checkout_btn().click()
+
+        self.input_username().clear()
+        self.input_email().clear()
+        self.input_phonenumber().clear()
+        self.input_username().send_keys('asd')
+        self.input_email().send_keys('asd')
+        self.input_phonenumber().send_keys('asd')
+
+    def paying_method_negative_02_short(self):
+        self.btn_step2().click()
+        self.input_billing_name().clear()
+        self.input_billing_taxnumber().clear()
+        self.input_billing_zipnumber().clear()
+        self.input_billing_city().clear()
+        self.input_billing_address().clear()
+        self.input_billing_name().send_keys('asd')
+        self.input_billing_taxnumber().send_keys('asd')
+        self.input_billing_zipnumber().send_keys('asd')
+        self.input_billing_city().send_keys('as')
+        self.input_billing_address().send_keys('asd')
+
+    def paying_method_negative_03_short(self):
+        self.btn_step3().click()
+        self.input_shipping_name().clear()
+        self.input_shipping_zipnumber().clear()
+        self.input_shipping_city().clear()
+        self.input_shipping_address().clear()
+        self.input_shipping_name().send_keys('asd')
+        self.input_shipping_zipnumber().send_keys('asd')
+        self.input_shipping_city().send_keys('as')
+        self.input_shipping_address().send_keys('asd')
+
+    def paying_method_negative_04_short(self):
+        self.btn_step4().click()
+        self.input_delivery_info().clear()
+        self.input_delivery_info().send_keys('asd')
+        self.btn_step5().click()
+
+    def paying_method_negative_01_long(self):
+        self.menu_cart().click()
+        self.checkout_btn().click()
+
+        self.input_username().clear()
+        self.input_email().clear()
+        self.input_phonenumber().clear()
+        self.input_username().send_keys('asdasdasdasdasdasdasdasdasd')
+        self.input_email().send_keys('asdasdasdasdasdasdasdasdasd')
+        self.input_phonenumber().send_keys('asdasdasdasdasdasdasdasdasd')
+
+    def paying_method_negative_02_long(self):
+        self.btn_step2().click()
+        self.input_billing_name().clear()
+        self.input_billing_taxnumber().clear()
+        self.input_billing_zipnumber().clear()
+        self.input_billing_city().clear()
+        self.input_billing_address().clear()
+        self.input_billing_name().send_keys('asdasdasdasdasdasdasdasdasd')
+        self.input_billing_taxnumber().send_keys('asdasdasdasdasdasdasdasdasd')
+        self.input_billing_zipnumber().send_keys('asdasdasdasdasdasdasdasdasd')
+        self.input_billing_city().send_keys('asdasdasdasdasdasdasdasdasd')
+        self.input_billing_address().send_keys('asdasdasdasdasdasdasdasdasd')
+
+
+        # def price_int1(self):
+        #     price_text = self.product_prices()[0].text
+        #     price_number = ''.join(filter(str.isdigit, price_text))
+        #     return int(price_number)
+        #
+        # def price_int2(self):
+        #     price_text = self.product_prices()[1].text
+        #     price_number = ''.join(filter(str.isdigit, price_text))
+        #     return int(price_number)
+        #
+        # def price_addresult(self):
+        #     price1 = self.price_int1()
+        #     price2 = self.price_int2()
+        #     return price1 + price2
+
+        # def last_purchase_sql(self):
+        #     connection = mysql.connector.connect(
+        #         host="localhost",
+        #         port=3306,
+        #         user="root",
+        #         password="test1234",
+        #         database="webshop"
+        #     )
+        #     cursor = connection.cursor()
+        #     cursor.execute("Select * From purchase Order by id desc limit 1;")
+        #     return cursor.fetchone()
+
+#Lokátorok:
+
+    def checkout_btn(self):
+        return WebDriverWait(self.browser, 5).until(
+            EC.visibility_of_element_located((By.XPATH, '//span[text()="Check out"]')))
+
+    def input_username(self):
+        return WebDriverWait(self.browser, 15).until(
+            EC.visibility_of_element_located((By.ID, 'formName_input')))
+
+    def input_email(self):
+        return WebDriverWait(self.browser, 15).until(
+            EC.visibility_of_element_located((By.XPATH, '//input[@id="formEmail_input"]')))
+
+    def input_phonenumber(self):
+        return WebDriverWait(self.browser, 15).until(
+            EC.visibility_of_element_located((By.XPATH, '//input[@id="formPhoneNumber_input"]')))
+
+#Buttons:
+    # FIZETÉS OLDAL - FORM
+
+    def btn_backtothecart(self):
+        return WebDriverWait(self.browser, 15).until(
+            EC.visibility_of_element_located((By.XPATH, '//span[text()="Back to the cart "]')))
+
+    def btn_next(self):
+        return WebDriverWait(self.browser, 15).until(
+            EC.visibility_of_element_located((By.XPATH, '//span[text()="Next"]')))
+
+    def btn_back(self):
+        return WebDriverWait(self.browser, 15).until(
+            EC.visibility_of_element_located((By.XPATH, '//span[text()="Back"]')))
+
+    def btn_sendorder(self):
+        return WebDriverWait(self.browser, 15).until(
+            EC.visibility_of_element_located((By.XPATH, '//span[text()="Send order "]')))
+
+    def btn_step2(self):
+        return WebDriverWait(self.browser, 15).until(
+            EC.visibility_of_element_located((By.XPATH, '//span[text()="2"]')))
+
+    def btn_step3(self):
+        return WebDriverWait(self.browser, 15).until(
+            EC.visibility_of_element_located((By.XPATH, '//span[text()="3"]')))
+
+    def btn_step4(self):
+        return WebDriverWait(self.browser, 15).until(
+            EC.visibility_of_element_located((By.XPATH, '//span[text()="4"]')))
+
+    def btn_step5(self):
+        return WebDriverWait(self.browser, 15).until(
+            EC.visibility_of_element_located((By.XPATH, '//span[text()="5"]')))
+
+# TERMÉK OLDAL:
+
+    def product_cards(self):
+        return WebDriverWait(self.browser, 5).until(
+            EC.visibility_of_all_elements_located((By.XPATH, '//div[@class="col ng-star-inserted"]')))
+
+    def product_card_1_addtocart(self):
+        return WebDriverWait(self.browser, 5).until(EC.visibility_of_element_located(
+            (By.XPATH, '//div[@id="1"]/mat-card/mat-card-actions/button[@id="button_addToCart"]')))
+
+    def product_card_3_addtocart(self):
+        return WebDriverWait(self.browser, 5).until(EC.visibility_of_element_located(
+            (By.XPATH, '//div[@id="3"]/mat-card/mat-card-actions/button[@id="button_addToCart"]')))
+
+    def product_all_add_btn(self):
+        return WebDriverWait(self.browser, 15).until(
+            EC.visibility_of_all_elements_located((By.XPATH, '//button[@id="button_addToCart"]')))
+
+
+ #Billing:
+
+    def input_billing_name(self):
+        return WebDriverWait(self.browser, 15).until(
+            EC.visibility_of_element_located((By.XPATH, '//input[@id="formName1_input"]')))
+
+    def input_billing_taxnumber(self):
+        return WebDriverWait(self.browser, 15).until(
+            EC.visibility_of_element_located((By.XPATH, '//input[@id="formTaxNumber_input"]')))
+
+    def input_billing_zipnumber(self):
+        return WebDriverWait(self.browser, 15).until(
+            EC.visibility_of_element_located((By.XPATH, '//input[@id="formZIP_input"]')))
+
+    def input_billing_city(self):
+        return WebDriverWait(self.browser, 15).until(
+            EC.visibility_of_element_located((By.XPATH, '//input[@id="city_input"]')))
+
+    def input_billing_address(self):
+        return WebDriverWait(self.browser, 15).until(
+            EC.visibility_of_element_located((By.XPATH, '//input[@id="adress_input"]')))
+
+# SHIPPING:
+
+    def input_shipping_name(self):
+        return WebDriverWait(self.browser, 15).until(
+            EC.visibility_of_element_located((By.XPATH, '//input[@id="shippingName_input"]')))
+
+    def input_shipping_zipnumber(self):
+        return WebDriverWait(self.browser, 15).until(
+            EC.visibility_of_element_located((By.XPATH, '//input[@id="shippingZIP_input"]')))
+
+    def input_shipping_city(self):
+        return WebDriverWait(self.browser, 15).until(
+            EC.visibility_of_element_located((By.XPATH, '//input[@id="shippingCity_input"]')))
+
+    def input_shipping_address(self):
+        return WebDriverWait(self.browser, 15).until(
+            EC.visibility_of_element_located((By.XPATH, '//input[@id="shippingStreet_input"]')))
+
+# DELIVERY
+
+    def input_delivery_info(self):
+        return WebDriverWait(self.browser, 15).until(
+            EC.visibility_of_element_located((By.XPATH, '//textarea[@id="delivery_input"]')))
+
+    # FIZETÉS OLDAL - SUCCESS
+
+    def input_success_window(self):
+        return WebDriverWait(self.browser, 15).until(
+            EC.visibility_of_element_located((By.XPATH, '//mat-dialog-container[@id="mat-dialog-0"]')))
+
+    def input_success_message(self):
+        return WebDriverWait(self.browser, 15).until(
+            EC.visibility_of_element_located((By.XPATH, '//div[@class="mat-dialog-content"]')))

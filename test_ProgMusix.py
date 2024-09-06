@@ -10,8 +10,8 @@ class TestProgmusix:
         self.page = page
         page.open()
 
-    def teardown_method(self):
-        self.page.close()
+    # def teardown_method(self):
+    #     self.page.close()
 
     def test_registration(self):
         self.page.registration_method()
@@ -26,6 +26,7 @@ class TestProgmusix:
         # Annak ellenőrzése, hogy megérkezik a visszaigazoló e-mail és tartalmazza a kattintható aktiváló linket
         self.page.reg_email()
         assert self.page.activate_link().is_displayed()
+        self.page.activate_link().click()
 
 
     def test_reg_TAB(self):
@@ -108,3 +109,11 @@ class TestProgmusix:
         # Egyezik, megjelenik az adatbázisban a beírt név, email cím, üzenet szövege:
         assert all(field in self.page.last_msg_sql()[0] for field in
                    [TESTDATA['contact_name'], TESTDATA['contact_email'], TESTDATA['contact_field']])
+
+    def test_paying(self):
+        #Login
+        self.page.login_method_p()
+        #Kosárba helyezés:
+        self.page.purchase_random_method()
+        # Fizetés
+        self.page.paying_method()
