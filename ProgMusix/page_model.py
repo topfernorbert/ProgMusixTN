@@ -209,7 +209,7 @@ class ProgMusix(GeneralPage):
         cursor.execute("SELECT email, message, name FROM message ORDER BY id DESC LIMIT 1")
         return cursor.fetchall()
 
-    def last_user_sql(self):
+    def last_user_del_sql(self):
         connection = mysql.connector.connect(
             host="localhost",
             port=3306,
@@ -218,8 +218,11 @@ class ProgMusix(GeneralPage):
             database="webshop"
         )
         cursor = connection.cursor()
-        cursor.execute("SELECT email, username FROM custom_user ORDER BY id DESC LIMIT 1")
-        return cursor.fetchone()
+        connection.start_transaction()
+        cursor.execute("DELETE FROM confirmation_token WHERE custom_user_id > 3")
+        cursor.execute("DELETE FROM user_role WHERE custom_user_id > 3")
+        cursor.execute("DELETE FROM custom_user WHERE id > 3")
+        connection.commit()
 
     def change_admin_sql(self):
         connection = mysql.connector.connect(
