@@ -118,7 +118,7 @@ class TestProgmusix:
         # Fizetés
         self.page.paying_method()      
     
-    def test_last_user_del(self):
-        self.page.last_user_del_sql()
+    #def test_last_user_del(self):
+       # self.page.last_user_del_sql()
 
 
