@@ -47,6 +47,18 @@ jobs:
       run: docker-compose -f compose.yaml ps
 
 
+    - name: Wait for 1 seconds
+      run: sleep 1
+
+    - name: Copy init file to Docker container
+      run: |
+        docker cp init.sql database:/init.sql
+
+    - name: Load init.sql into MySQL database
+      run: |
+        docker-compose exec database mysql -u root -ptest1234 webshop < ./init.sql
+
+
 
     - name: Test with pytest
       env:
