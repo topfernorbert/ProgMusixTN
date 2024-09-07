@@ -234,7 +234,7 @@ class ProgMusix(GeneralPage):
         cursor.execute("DELETE FROM confirmation_token WHERE custom_user_id > 0")
         cursor.execute("DELETE FROM user_role WHERE custom_user_id > 0")
         cursor.execute("DELETE FROM product_purchase WHERE purchase_id > 0;")
-        cursor.execute("DELETE FROM purchase WHERE custom_user_id > 0;)
+        cursor.execute("DELETE FROM purchase WHERE custom_user_id > 0;")
         cursor.execute("DELETE FROM custom_user WHERE id > 0")
         connection.commit()
 
