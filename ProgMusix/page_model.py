@@ -75,7 +75,7 @@ class ProgMusix(GeneralPage):
     # Regisztráció, pozitív ág:
 
     def create_page_btn(self):
-        return WebDriverWait(self.browser, 30).until(
+        return WebDriverWait(self.browser, 30, 1).until(
             EC.element_to_be_clickable((By.XPATH, '//button[@class="create_account"]')))
 
     def email(self):
