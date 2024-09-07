@@ -393,6 +393,8 @@ class ProgMusix(GeneralPage):
         self.checkout_btn().click()
         self.btn_step2().click()
         self.input_username().send_keys(TESTDATA['username_p'])
+
+        self.input_email().send_keys(TESTDATA['email_p'])
         self.input_phonenumber().send_keys(TESTDATA['phone_p'])
         self.btn_step2().click()
 
