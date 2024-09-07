@@ -392,11 +392,7 @@ class ProgMusix(GeneralPage):
         # self.login_method_p()
         self.menu_cart().click()
         self.checkout_btn().click()
-        time.sleep(2)
-        self.btn_step2().click()
-        time.sleep(2)
         self.input_username().send_keys(TESTDATA['username_p'])
-
         #self.input_email().send_keys(TESTDATA['email_p'])
         self.input_phonenumber().send_keys(TESTDATA['phone_p'])
         self.btn_step2().click()
