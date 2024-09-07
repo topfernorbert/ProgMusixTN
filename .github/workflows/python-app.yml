@@ -47,8 +47,8 @@ jobs:
       run: docker-compose -f compose.yaml ps
 
 
-    - name: Wait for 1 seconds
-      run: sleep 1
+    - name: Wait for 5 seconds
+      run: sleep 5
 
     - name: Copy init file to Docker container
       run: |
