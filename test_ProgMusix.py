@@ -10,8 +10,8 @@ class TestProgmusix:
         self.page = page
         page.open()
 
-    def teardown_method(self):
-        self.page.close()
+    # def teardown_method(self):
+    #     self.page.close()
 
     def test_registration(self):
         self.page.registration_method()
@@ -27,6 +27,11 @@ class TestProgmusix:
         self.page.reg_email()
         assert self.page.activate_link().is_displayed()
         self.page.activate_link().click()
+
+    def test_login_positive(self):
+        self.page.login_method_p()
+        # A belépéshez szükséges gomb engedélyezve van-e:
+        assert self.page.login_btn().is_enabled()
 
 
     def test_reg_TAB(self):
@@ -80,10 +85,7 @@ class TestProgmusix:
         assert not self.page.register_btn().is_enabled()
 
 
-    def test_login_positive(self):
-        self.page.login_method_p()
-        # A belépéshez szükséges gomb engedélyezve van-e:
-        assert self.page.login_btn().is_enabled()
+
 
     def test_login_TAB(self):
         self.page.login_method_TAB_n()
