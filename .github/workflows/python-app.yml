@@ -46,19 +46,7 @@ jobs:
     - name: Check running containers
       run: docker-compose -f compose.yaml ps
 
-    - name: Install MySQL client
-      run: sudo apt-get install mysql-client
 
-    - name: Wait for 10 seconds
-      run: sleep 10
-
-    - name: Copy init file to Docker container
-      run: |
-        docker cp init.sql database:/init.sql
-
-    - name: Load init.sql into MySQL database
-      run: |
-        docker-compose exec database mysql -u root -ptest1234 webshop < ./init.sql
 
     - name: Test with pytest
       env:
