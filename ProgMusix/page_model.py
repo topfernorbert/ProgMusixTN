@@ -233,6 +233,8 @@ class ProgMusix(GeneralPage):
         connection.start_transaction()
         cursor.execute("DELETE FROM confirmation_token WHERE custom_user_id > 0")
         cursor.execute("DELETE FROM user_role WHERE custom_user_id > 0")
+        cursor.execute("DELETE FROM product_purchase WHERE purchase_id > 0;")
+        cursor.execute("DELETE FROM purchase WHERE custom_user_id > 0;")
         cursor.execute("DELETE FROM custom_user WHERE id > 0")
         connection.commit()
 
@@ -392,11 +394,7 @@ class ProgMusix(GeneralPage):
         # self.login_method_p()
         self.menu_cart().click()
         self.checkout_btn().click()
-        time.sleep(2)
-        self.btn_step2().click()
-        time.sleep(2)
         self.input_username().send_keys(TESTDATA['username_p'])
-
         #self.input_email().send_keys(TESTDATA['email_p'])
         self.input_phonenumber().send_keys(TESTDATA['phone_p'])
         self.btn_step2().click()
