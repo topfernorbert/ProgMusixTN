@@ -62,6 +62,21 @@ jobs:
           fi
         done
 
+    - name: Wait for database to be healthy
+      run: |
+        for i in {1..10}; do
+          if [ "$(docker inspect --format='{{json .State.Health.Status}}' database)" == "\"healthy\"" ]; then
+            echo "Database is healthy."
+            break
+          else
+            echo "Waiting for database to be healthy..."
+            sleep 10
+          fi
+        done
+
+    - name: Check running containers
+      run: docker-compose -f compose.yaml ps
+
     - name: Copy init file to Docker container
       run: |
         docker cp init.sql database:/init.sql
@@ -70,6 +85,7 @@ jobs:
       run: |
         docker-compose exec database mysql -u root -ptest1234 webshop < ./init.sql
 
+    
 
 
     - name: Test with pytest
