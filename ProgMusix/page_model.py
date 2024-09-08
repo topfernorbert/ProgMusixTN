@@ -76,7 +76,7 @@ class ProgMusix(GeneralPage):
 
     def create_page_btn(self):
         return WebDriverWait(self.browser, 50).until(
-            EC.visibility_of_element_located((By.CLASS_NAME, 'create_account')))
+            EC.presence_of_element_located((By.CLASS_NAME, 'create_account')))
 
     def email(self):
         return WebDriverWait(self.browser, 5).until(EC.visibility_of_element_located((By.ID, 'mat-input-2')))
