@@ -37,7 +37,6 @@ services:
     ports:
       - "4200:4200"
     depends_on:
-      backend:
         condition: service_healty
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:4200 || exit 1"]  # Ellenőrzi, hogy a frontend elérhető-e
