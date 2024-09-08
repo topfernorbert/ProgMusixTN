@@ -102,7 +102,7 @@ jobs:
         PUBLISH_BRANCH: gh-pages
         PUBLISH_DIR: allure-history
 
-    - name: Docker compose down
-      if: always() 
-      run: |
-        docker-compose -f compose.yaml down
+  #  - name: Docker compose down
+   #   if: always() 
+   #   run: |
+   #     docker-compose -f compose.yaml down
