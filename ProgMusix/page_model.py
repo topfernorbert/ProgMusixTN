@@ -76,7 +76,7 @@ class ProgMusix(GeneralPage):
 
     def create_page_btn(self):
         return WebDriverWait(self.browser, 50).until(
-            EC.element_to_be_clickable((By.CLASS_NAME, 'create_account')))
+            EC.visibility_of_element_located((By.CLASS_NAME, 'create_account')))
 
     def email(self):
         return WebDriverWait(self.browser, 5).until(EC.visibility_of_element_located((By.ID, 'mat-input-2')))
@@ -254,7 +254,7 @@ class ProgMusix(GeneralPage):
 
     def registration_method(self):
         self.menu_login_btn().click()
-        self.btn_createaccount().click()
+        self.create_page_btn().click()
         self.email().send_keys(TESTDATA['email_p'])
         self.username().send_keys(TESTDATA['username_p'])
         self.password().send_keys(TESTDATA['password_p'])
