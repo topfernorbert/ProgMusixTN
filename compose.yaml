@@ -25,7 +25,7 @@ services:
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://database:3306/webshop?serverTimezone=UTC&characterEncoding=utf8
     healthcheck:
-      test: ["CMD", "curl -f http://localhost:8080/api/products || exit 1"]
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/products"]
       interval: 30s
       timeout: 10s
       retries: 3
