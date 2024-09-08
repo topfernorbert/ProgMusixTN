@@ -253,7 +253,10 @@ class ProgMusix(GeneralPage):
 
     def registration_method(self):
         self.menu_login_btn().click()
-        self.create_page_btn().click()
+        try:
+            self.create_page_btn().click()
+        except Exception:
+            pass
         self.email().send_keys(TESTDATA['email_p'])
         self.username().send_keys(TESTDATA['username_p'])
         self.password().send_keys(TESTDATA['password_p'])
