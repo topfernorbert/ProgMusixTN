@@ -43,36 +43,25 @@ jobs:
         docker-compose -f compose.yaml up -d
         docker-compose -f compose.yaml ps
 
-    - name: Check running containers
-      run: docker-compose -f compose.yaml ps
-
-
-    - name: Wait for 5 seconds
-      run: sleep 10
-
-    - name: Wait for backend to be healthy
+    - name: Wait for all services to be healthy
       run: |
-        for i in {1..10}; do
-          if [ "$(docker inspect --format='{{json .State.Health.Status}}' backend)" == "\"healthy\"" ]; then
-            echo "Backend is healthy."
-            break
-          else
-            echo "Waiting for backend to be healthy..."
-            sleep 10
+        services=("database" "backend" "frontend")
+        for service in "${services[@]}"; do
+          for i in {1..10}; do
+            if [ "$(docker inspect --format='{{json .State.Health.Status}}' $service)" == "\"healthy\"" ]; then
+              echo "$service is healthy."
+              break
+            else
+              echo "Waiting for $service to be healthy..."
+              sleep 10
+            fi
+          done
+          if [ "$(docker inspect --format='{{json .State.Health.Status}}' $service)" != "\"healthy\"" ]; then
+            echo "$service did not become healthy in time."
+            exit 1
           fi
         done
 
-    - name: Wait for database to be healthy
-      run: |
-        for i in {1..10}; do
-          if [ "$(docker inspect --format='{{json .State.Health.Status}}' database)" == "\"healthy\"" ]; then
-            echo "Database is healthy."
-            break
-          else
-            echo "Waiting for database to be healthy..."
-            sleep 10
-          fi
-        done
 
     - name: Check running containers
       run: docker-compose -f compose.yaml ps
