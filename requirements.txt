@@ -3,3 +3,4 @@ allure-pytest
 selenium
 mysql-connector-python
 requests
+pytest-ordering
