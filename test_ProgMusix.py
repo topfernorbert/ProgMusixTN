@@ -5,6 +5,7 @@ import pytest
 import time
 
 
+
 class TestProgmusix:
     def setup_method(self):
         page = ProgMusix(get_preconfigured_chrome_driver())
