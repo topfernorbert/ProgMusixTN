@@ -131,8 +131,8 @@ class TestProgmusix:
         # Fizetés
         self.page.paying_method()
 
-    @pytest.mark.order(-1)
-    def test_last_user_del(self):
-        self.page.last_user_del_sql()
+    # @pytest.mark.order(-1)
+    # def test_last_user_del(self):
+    #     self.page.last_user_del_sql()
 
 
