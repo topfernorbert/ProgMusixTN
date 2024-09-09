@@ -75,8 +75,7 @@ class ProgMusix(GeneralPage):
     # Regisztráció, pozitív ág:
 
     def create_page_btn(self):
-        return WebDriverWait(self.browser, 15).until(
-            EC.visibility_of_element_located((By.CLASS_NAME, 'create_account')))
+        return WebDriverWait(self.browser, 50).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.create_account')))
 
     def email(self):
         return WebDriverWait(self.browser, 5).until(EC.visibility_of_element_located((By.ID, 'mat-input-2')))
@@ -253,9 +252,7 @@ class ProgMusix(GeneralPage):
         connection.commit()
 
     def registration_method(self):
-        self.menu_login_btn().click()
-        time.sleep(2)
-        self.create_page_btn().click()
+        self.browser.get('http://localhost:4200/registration')
         self.email().send_keys(TESTDATA['email_p'])
         self.username().send_keys(TESTDATA['username_p'])
         self.password().send_keys(TESTDATA['password_p'])
@@ -265,7 +262,7 @@ class ProgMusix(GeneralPage):
     def registration(self):
         self.menu_login_btn().click()
         time.sleep(1)
-        self.create_btn().click()
+        self.create_page_btn().click()
 
     def registration_invalid_name(self):
         self.registration()
@@ -315,7 +312,7 @@ class ProgMusix(GeneralPage):
 
     def reg_TAB_method(self):
         self.menu_login_btn().click()
-        self.create_btn().click()
+        self.create_page_btn().click()
         self.email().send_keys(Keys.TAB)
         self.username().send_keys(Keys.TAB)
         self.password().send_keys(Keys.TAB)
@@ -323,7 +320,7 @@ class ProgMusix(GeneralPage):
 
     def reg_negative_method(self):
         self.menu_login_btn().click()
-        self.create_btn().click()
+        self.create_page_btn().click()
         self.email().send_keys(TESTDATA['negative_email'])
         self.username().send_keys(TESTDATA['negative_username'])
         self.password().send_keys(TESTDATA['negative_password'])
