@@ -22,7 +22,7 @@ class TestProgmusix:
         # Adatbázisban is megjelenik a regisztráció:
         assert TESTDATA['email_p'] and TESTDATA['username_p'] in self.page.last_user_sql()
 
-    def regtest(self):
+    def test_regtest(self):
         self.page.registration()
         assert self.page.current_url() == "http://localhost:4200/registration"
 
