@@ -261,7 +261,6 @@ class ProgMusix(GeneralPage):
 
     def registration(self):
         self.menu_login_btn().click()
-        time.sleep(1)
         self.create_page_btn().click()
 
     def registration_invalid_name(self):
