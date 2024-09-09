@@ -263,6 +263,14 @@ class ProgMusix(GeneralPage):
         self.menu_login_btn().click()
         self.create_page_btn().click()
 
+    def reg_user_data_send(self):
+        self.email().send_keys(TESTDATA['email_p'])
+        self.username().send_keys(TESTDATA['username_p'])
+        self.password().send_keys(TESTDATA['password_p'])
+        self.password_again().send_keys(TESTDATA['password_p'])
+        self.register_btn().click()
+
+
     def registration_invalid_name(self):
         self.registration()
         self.email().send_keys(TESTDATA['email_p'])

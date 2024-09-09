@@ -13,18 +13,22 @@ class TestProgmusix:
     # def teardown_method(self):
     #     self.page.close()
 
-    def test_registration(self):
-        self.page.registration_method()
-        # Helyesen lettek kitöltve az adatok, elérhető a regisztrációs gomb:
-        assert self.page.register_btn().is_enabled()
-        # Regisztráció megerősítő üzenet megjelenik:
-        assert self.page.succesfull_msg() == TESTDATA['succesful_msg']
-        # Adatbázisban is megjelenik a regisztráció:
-        assert TESTDATA['email_p'] and TESTDATA['username_p'] in self.page.last_user_sql()
+    # def test_registration(self):
+    #     self.page.registration_method()
+    #     # Helyesen lettek kitöltve az adatok, elérhető a regisztrációs gomb:
+    #     assert self.page.register_btn().is_enabled()
+    #     # Regisztráció megerősítő üzenet megjelenik:
+    #     assert self.page.succesfull_msg() == TESTDATA['succesful_msg']
+    #     # Adatbázisban is megjelenik a regisztráció:
+    #     assert TESTDATA['email_p'] and TESTDATA['username_p'] in self.page.last_user_sql()
 
     def test_regtest(self):
         self.page.registration()
         assert self.page.current_url() == "http://localhost:4200/registration"
+        self.page.reg_user_data_send()
+        assert self.page.register_btn().is_enabled()
+        assert self.page.succesfull_msg() == TESTDATA['succesful_msg']
+        assert TESTDATA['email_p'] and TESTDATA['username_p'] in self.page.last_user_sql()
 
     def test_reg_email(self):
         # Annak ellenőrzése, hogy megérkezik a visszaigazoló e-mail és tartalmazza a kattintható aktiváló linket
