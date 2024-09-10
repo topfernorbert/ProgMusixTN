@@ -1,6 +1,6 @@
 TESTDATA = {
     "email_p": "pm-tn@endtest-mail.io",
-    "username_p": "ProgMasters_TN_1",
+    "username_p": "ProgMastersTN",
     "password_p": "Test12345!",
     "succesful_msg": "The verification email has been sent to your email address, please verify your registration before log in",
     "negative_email": "nemkell.email.hu",

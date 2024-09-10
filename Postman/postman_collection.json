@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "db7db03f-e826-4e0a-b213-e4d73068cc50",
+		"_postman_id": "763ad8e0-01cc-4c1e-98a5-f01ad2744d8c",
 		"name": "ProgMusix",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "34958965"
@@ -51,7 +51,7 @@
 					"response": []
 				},
 				{
-					"name": "Login",
+					"name": "Login - admin",
 					"event": [
 						{
 							"listen": "test",
@@ -64,7 +64,10 @@
 									"pm.test(\"Response time is less than 200ms\", function () {\r",
 									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 									"});\r",
-									""
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"Access token\", jsonData.access_token);\r",
+									"pm.environment.set(\"Refresh token\", jsonData.refresh_token);"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -92,31 +95,6 @@
 								{
 									"key": "password",
 									"value": "Teszt12345!"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Confirmation",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/api/users/confirm?token=8e9d400d-7ed2-46f6-88b6-79d2ef2cd749",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"users",
-								"confirm"
-							],
-							"query": [
-								{
-									"key": "token",
-									"value": "8e9d400d-7ed2-46f6-88b6-79d2ef2cd749"
 								}
 							]
 						}
@@ -153,7 +131,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{Acess token}}",
+									"value": "{{Access token}}",
 									"type": "string"
 								}
 							]
@@ -261,7 +239,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "{{Acess token}}",
+							"value": "{{Access token}}",
 							"type": "string"
 						}
 					]
@@ -290,7 +268,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "{{Acess token}}",
+							"value": "{{Access token}}",
 							"type": "string"
 						}
 					]
@@ -299,7 +277,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Lófaszú baglyok\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Új kategória\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -417,7 +395,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "{{Acess token}}",
+							"value": "{{Access token}}",
 							"type": "string"
 						}
 					]
