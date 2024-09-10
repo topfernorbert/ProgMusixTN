@@ -3,6 +3,12 @@ from ProgMusix.page_model import ProgMusix
 from ProgMusix.configs.testdata import TESTDATA
 
 
+class TestProgmusix:
+    def setup_method(self):
+        page = ProgMusix(get_preconfigured_chrome_driver())
+        self.page = page
+        page.open()
+
     @pytest.mark.order(1)
     def test_regtest(self):
         self.page.registration()
