@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "763ad8e0-01cc-4c1e-98a5-f01ad2744d8c",
-		"name": "ProgMusix",
+		"name": "ProgMusix Copy",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "34958965"
 	},
@@ -30,7 +30,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"userName\": \"UHJvZ011c2l4VE5O\",\r\n    \"email\": \"bG9zYmxhbmNvc3JtQGdtYWlsLmNvbQ==\",\r\n    \"password\": \"VGVzenQxMjM0NSE=\"\r\n}",
+							"raw": "{\r\n    \"userName\": \"UHJvZ01hc3RlcnNUTg==\",\r\n    \"email\": \"cG0tdG5AZW5kdGVzdC1tYWlsLmlv\",\r\n    \"password\": \"VGVzdDEyMzQ1IQ==\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -78,7 +78,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/api/users/login?userName=ProgMusixTNN&password=Teszt12345!",
+							"raw": "{{baseUrl}}/api/users/login?userName=ProgMastersTN&password=Teszt12345!",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -90,7 +90,7 @@
 							"query": [
 								{
 									"key": "userName",
-									"value": "ProgMusixTNN"
+									"value": "ProgMastersTN"
 								},
 								{
 									"key": "password",
@@ -263,18 +263,14 @@
 		{
 			"name": "New category",
 			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{Access token}}",
-							"type": "string"
-						}
-					]
-				},
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Access token}}",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"name\": \"Új kategória\"\r\n}",
