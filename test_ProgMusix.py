@@ -45,6 +45,8 @@ class TestProgmusix:
         # A belépéshez szükséges gomb engedélyezve van-e:
         assert self.page.login_btn().is_enabled()
 
+    def test_change_admin(self):
+        self.page.change_admin_sql()
 
     def test_reg_TAB(self):
         self.page.reg_TAB_method()
