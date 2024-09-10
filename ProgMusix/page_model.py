@@ -261,6 +261,7 @@ class ProgMusix(GeneralPage):
 
     def registration(self):
         self.menu_login_btn().click()
+        time.sleep(3)
         self.create_page_btn().click()
 
     def reg_user_data_send(self):
