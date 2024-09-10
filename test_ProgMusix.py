@@ -5,6 +5,7 @@ import pytest
 import time
 
 
+
 class TestProgmusix:
     def setup_method(self):
         page = ProgMusix(get_preconfigured_chrome_driver())
@@ -125,13 +126,11 @@ class TestProgmusix:
     def test_paying(self):
         #Login
         self.page.login_method_p()
-        #Kosárba helyezés:
-        self.page.purchase_random_method()
-        # Fizetés
+        # self.page.purchase_random_method()
         self.page.paying_method()
 
-    @pytest.mark.order(-1)
-    def test_last_user_del(self):
-        self.page.last_user_del_sql()
+    # @pytest.mark.order(-1)
+    # def test_last_user_del(self):
+    #     self.page.last_user_del_sql()
 
 
