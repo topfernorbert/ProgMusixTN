@@ -100,16 +100,6 @@ jobs:
         --reporters cli,json \
         --reporter-json-export Postman/reports/report.json
 
-    - name: Extract tokens from report and set as environment variables
-      run: |
-        access_token=$(jq -r '.run.executions[0].response.stream | fromjson | .access_token' Postman/reports/report.json)
-        refresh_token=$(jq -r '.run.executions[0].response.stream | fromjson | .refresh_token' Postman/reports/report.json)
-        echo "ACCESS_TOKEN=$access_token" >> $GITHUB_ENV
-        echo "REFRESH_TOKEN=$refresh_token" >> $GITHUB_ENV
-
-    - name: Check current working directory
-      run: pwd
-        
     - name: Allure Report action from marketplace
       if: always()
       uses: simple-elf/allure-report-action@master
