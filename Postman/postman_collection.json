@@ -94,7 +94,7 @@
 								},
 								{
 									"key": "password",
-									"value": "Teszt12345!"
+									"value": "Test12345!"
 								}
 							]
 						}
@@ -266,9 +266,9 @@
 				"method": "POST",
 				"header": [
 					{
-						"key": "Authorization",
-						"value": "Bearer {{Access token}}",
-						"type": "text"
+						"key": "token",
+						"value": "{{Access token}}",
+						"type": "string"
 					}
 				],
 				"body": {
