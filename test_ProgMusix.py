@@ -122,7 +122,7 @@ class TestProgmusix:
         assert all(field in self.page.last_msg_sql()[0] for field in
                    [TESTDATA['contact_name'], TESTDATA['contact_email'], TESTDATA['contact_field']])
 
-    @pytest.mark.order(4)
+    @pytest.mark.order(-1)
     def test_paying(self):
         #Login
         self.page.login_method_p()
