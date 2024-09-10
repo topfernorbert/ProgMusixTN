@@ -7,6 +7,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from random import randint
+import requests
 
 class ProgMusix(GeneralPage):
 
@@ -647,3 +648,9 @@ class ProgMusix(GeneralPage):
 
 #Postman:
 
+    def postman_1(self):
+        url = "http://localhost:8080/api/categories"
+        payload = {}
+        headers = {}
+        response = requests.request("GET", url, headers=headers, data=payload)
+        return response.text

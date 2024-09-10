@@ -133,4 +133,8 @@ class TestProgmusix:
     # def test_last_user_del(self):
     #     self.page.last_user_del_sql()
 
+    def test_postman1(self):
+        self.page.postman_1()
+        assert self.page.postman_1() == '[{"id":1,"name":"WOODWIND"},{"id":2,"name":"BRASS INSTRUMENTS"},{"id":3,"name":"PERCUSSION INSTRUMENTS"},{"id":4,"name":"KEYBOARD INSTRUMENTS"},{"id":5,"name":"GUITAR FAMILY"},{"id":6,"name":"BOWED STRINGS"},{"id":7,"name":"MISC"},{"id":14,"name":"TRADITIONAL"}]'
+
 
