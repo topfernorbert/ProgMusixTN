@@ -125,10 +125,8 @@ class TestProgmusix:
     @pytest.mark.order(4)
     def test_paying(self):
         #Login
-
-        #Kosárba helyezés:
-        self.page.purchase_random_method()
-        # Fizetés
+        self.page.login_method_p()
+        # self.page.purchase_random_method()
         self.page.paying_method()
 
     # @pytest.mark.order(-1)
