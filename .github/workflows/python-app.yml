@@ -87,7 +87,7 @@ jobs:
         DATABASE_PASSWORD: test1234
         DATABASE_NAME: webshop
       run: |
-        pytest test_PM.py test_ProgMusix.py Postman/test_Postman/tests_Postman.py --alluredir=allure-results || true
+        pytest test_pm.py test_ProgMusix.py Postman/test_Postman/tests_Postman.py --alluredir=allure-results || true
         
     - name: Install Newman
       run: npm install -g newman
