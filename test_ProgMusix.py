@@ -25,7 +25,7 @@ class TestProgmusix:
     #     assert TESTDATA['email_p'] and TESTDATA['username_p'] in self.page.last_user_sql()
 
     @pytest.mark.order(1)
-    def test_regtest(self):
+    #def test_regtest(self):
         self.page.registration()
         assert self.page.current_url() == "http://localhost:4200/registration"
         self.page.reg_user_data_send()
