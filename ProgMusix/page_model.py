@@ -262,7 +262,7 @@ class ProgMusix(GeneralPage):
 
     def registration(self):
         self.menu_login_btn().click()
-        self.create_page_btn().click()
+        self.create_page_btn_try().click()
 
     def reg_user_data_send(self):
         self.email().send_keys(TESTDATA['email_p'])
