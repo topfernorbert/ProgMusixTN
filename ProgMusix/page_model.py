@@ -262,7 +262,7 @@ class ProgMusix(GeneralPage):
 
     def registration(self):
         self.menu_login_btn().click()
-        self.create_page_btn().click()
+        self.create_page_btn_try().click()
 
     def reg_user_data_send(self):
         self.email().send_keys(TESTDATA['email_p'])
@@ -653,3 +653,12 @@ class ProgMusix(GeneralPage):
         headers = {}
         response = requests.request("GET", url, headers=headers, data=payload)
         return response.text
+
+# reg egy szar
+
+    def wait_for_element_to_be_clickable(self, class_name, timeout=10):
+        return WebDriverWait(self.browser, timeout).until(EC.element_to_be_clickable((By.CLASS_NAME, class_name)))
+
+
+    def create_page_btn_try(self):
+        return self.wait_for_element_to_be_clickable('create_account')
