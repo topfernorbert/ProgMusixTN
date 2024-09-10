@@ -32,14 +32,14 @@ class TestProgmusix:
         #assert self.page.register_btn().is_enabled()
         #assert self.page.succesfull_msg() == TESTDATA['succesful_msg']
         #assert TESTDATA['email_p'] and TESTDATA['username_p'] in self.page.last_user_sql()
-    @pytest.mark.order(2)
+    #@pytest.mark.order(2)
     def test_reg_email(self):
         # Annak ellenőrzése, hogy megérkezik a visszaigazoló e-mail és tartalmazza a kattintható aktiváló linket
         self.page.reg_email()
         assert self.page.activate_link().is_displayed()
         self.page.activate_link().click()
 
-    @pytest.mark.order(3)
+    #@pytest.mark.order(3)
     def test_login_positive(self):
         self.page.login_method_p()
         # A belépéshez szükséges gomb engedélyezve van-e:
