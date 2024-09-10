@@ -9,7 +9,7 @@ class TestProgmusix:
         self.page = page
         page.open()
 
-    @pytest.mark.order(1)
+
     def test_regtest(self):
         self.page.registration()
         assert self.page.current_url() == "http://localhost:4200/registration"
