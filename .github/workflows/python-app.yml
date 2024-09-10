@@ -89,8 +89,8 @@ jobs:
       run: |
         pytest test_ProgMusix.py --alluredir=allure-results || true
         
-    - name: Install/Update Newman to Latest
-      run: npm install -g newman@latest
+    - name: Install Newman
+      run: npm install -g newman
 
     - name: Install Node.js and Newman
       run: |
@@ -102,6 +102,23 @@ jobs:
     - name: Run Postman tests
       run: |
          npx newman run Postman/postman_collection.json -e Postman/postman_environment.json || true # A '|| true'
+
+    - name: Run Postman collection with Newman
+      run: |
+        newman run Postman/postman_collection.json \
+        --environment Postman/postman_environment.json \
+        --reporters cli,json \
+        --reporter-json-export Postman/reports/report.json
+
+    - name: Extract tokens from report and set as environment variables
+      run: |
+        access_token=$(jq -r '.run.executions[0].response.stream | fromjson | .access_token' Postman/reports/report.json)
+        refresh_token=$(jq -r '.run.executions[0].response.stream | fromjson | .refresh_token' Postman/reports/report.json)
+        echo "ACCESS_TOKEN=$access_token" >> $GITHUB_ENV
+        echo "REFRESH_TOKEN=$refresh_token" >> $GITHUB_ENV
+
+    - name: Check current working directory
+      run: pwd
         
     - name: Allure Report action from marketplace
       if: always()
