@@ -89,19 +89,19 @@ jobs:
       run: |
         pytest test_ProgMusix.py --alluredir=allure-results || true
         
-    # # - name: Install/Update Newman to Latest
-    # #   run: npm install -g newman@latest
+    - name: Install/Update Newman to Latest
+      run: npm install -g newman@latest
 
-    # - name: Install Node.js and Newman
-    #   run: |
-    #     curl -fsSL https://deb.nodesource.com/setup_20.17.0 | sudo -E bash -
-    #     sudo apt-get install -y nodejs
-    #     npm install -g newman-reporter-allure
-    #     #npm install -g newman newman-reporter-htmlextra
+    - name: Install Node.js and Newman
+      run: |
+         curl -fsSL https://deb.nodesource.com/setup_20.17.0 | sudo -E bash -
+         sudo apt-get install -y nodejs
+         npm install -g newman-reporter-allure
+         #npm install -g newman newman-reporter-htmlextra
       
-    # - name: Run Postman tests
-    #   run: |
-    #     npx newman run Postman/postman_collection.json -e Postman/postman_environment.json || true # A '|| true'
+    - name: Run Postman tests
+      run: |
+         npx newman run Postman/postman_collection.json -e Postman/postman_environment.json || true # A '|| true'
         
     - name: Allure Report action from marketplace
       if: always()
