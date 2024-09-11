@@ -415,7 +415,7 @@ class ProgMusix(GeneralPage):
         return total
 
     def paying_method(self):
-        # self.login_method_p()
+        self.login_method_p()
         self.purchase_random_method()
         self.menu_cart().click()
         self.checkout_btn().click()
