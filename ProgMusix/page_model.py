@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import ElementClickInterceptedException
 from random import randint
 import requests
 
@@ -263,6 +264,17 @@ class ProgMusix(GeneralPage):
     def registration(self):
         self.menu_login_btn().click()
         self.create_page_btn_try().click()
+
+    def registration_refres(self, max_attempts=3):
+        attempts = 0
+        while attempts < max_attempts:
+            try:
+                self.create_page_btn().click()
+                return True
+            except ElementClickInterceptedException:
+                attempts += 1
+                self.browser.refresh()
+
 
     def reg_user_data_send(self):
         self.email().send_keys(TESTDATA['email_p'])
