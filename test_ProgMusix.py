@@ -120,6 +120,7 @@ class TestProgmusix:
 
     def test_paying(self):
         #Login
+        time.sleep(1)
         self.page.login_method_p()
         # self.page.purchase_random_method()
         self.page.paying_method()

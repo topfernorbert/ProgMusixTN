@@ -267,7 +267,7 @@ class ProgMusix(GeneralPage):
         attempts = 0
         while attempts < max_attempts:
             try:
-                self.create_page_btn().click()
+                self.create_page_btn()
                 return True
             except ElementClickInterceptedException:
                 attempts += 1
@@ -355,6 +355,7 @@ class ProgMusix(GeneralPage):
         self.password_again().send_keys(Keys.TAB)
 
     def login_method_p(self):
+        time.sleep(1)
         self.menu_login_btn().click()
         self.username_login().send_keys(TESTDATA['username_p'])
         self.password_login().send_keys(TESTDATA['password_p'])
