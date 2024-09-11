@@ -77,7 +77,7 @@ class ProgMusix(GeneralPage):
     # Regisztráció, pozitív ág:
 
     def create_page_btn(self):
-        return WebDriverWait(self.browser, 50, 1).until(EC.visibility_of_element_located((By.CLASS_NAME, 'create_account')))
+        return WebDriverWait(self.browser, 50,1).until(EC.visibility_of_element_located((By.CLASS_NAME, 'create_account'))).click()
 
     def email(self):
         return WebDriverWait(self.browser, 5).until(EC.visibility_of_element_located((By.ID, 'mat-input-2')))
@@ -276,7 +276,7 @@ class ProgMusix(GeneralPage):
     def registration(self):
         time.sleep(1)
         self.menu_login_btn().click()
-        self.create_page_btn().click
+        self.create_page_btn()
     #self.registration_refresh()
 
 
