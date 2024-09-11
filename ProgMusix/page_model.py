@@ -253,6 +253,18 @@ class ProgMusix(GeneralPage):
         cursor.execute("UPDATE user_role SET roles = 'ROLE_ADMIN' WHERE custom_user_id = %s", (max_user_id,))
         connection.commit()
 
+    def user_role_sql(self):
+        connection = mysql.connector.connect(
+            host="localhost",
+            port=3306,
+            user="root",
+            password="test1234",
+            database="webshop"
+        )
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM user_role ORDER BY custom_user_id DESC LIMIT 1")
+        return cursor.fetchone()
+
     def registration_method(self):
         self.browser.get('http://localhost:4200/registration')
         self.email().send_keys(TESTDATA['email_p'])
