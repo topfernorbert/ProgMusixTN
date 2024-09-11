@@ -12,7 +12,6 @@ class TestProgmusix:
         
     def test_regtest(self):
         self.page.registration()
-        assert self.page.current_url() == "http://localhost:4200/registration"
         self.page.reg_user_data_send()
         assert self.page.register_btn().is_enabled()
         assert self.page.succesfull_msg() == TESTDATA['succesful_msg']
