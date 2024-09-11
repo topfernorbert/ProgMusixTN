@@ -260,9 +260,7 @@ class ProgMusix(GeneralPage):
         self.password_again().send_keys(TESTDATA['password_p'])
         self.register_btn().click()
 
-    def registration(self):
-        self.menu_login_btn().click()
-        self.create_page_btn_try().click()
+
 
     def reg_user_data_send(self):
         self.email().send_keys(TESTDATA['email_p'])
@@ -672,3 +670,15 @@ class ProgMusix(GeneralPage):
             except ElementClickInterceptedException:
                 attempts += 1
                 self.browser.refresh()
+
+
+    def registration(self):
+        self.menu_login_btn().click()
+        self.registration_refres()
+
+
+
+
+
+
+
