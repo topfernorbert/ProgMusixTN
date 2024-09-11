@@ -239,7 +239,7 @@ class ProgMusix(GeneralPage):
         cursor.execute("DELETE FROM custom_user WHERE id > 0")
         connection.commit()
 
-    def change_admin_sql(self):
+    def change_last_admin_sql(self):
         connection = mysql.connector.connect(
             host="localhost",
             port=3306,
@@ -251,6 +251,18 @@ class ProgMusix(GeneralPage):
         cursor.execute("SELECT MAX(custom_user_id) FROM user_role")
         max_user_id = cursor.fetchone()[0]
         cursor.execute("UPDATE user_role SET roles = 'ROLE_ADMIN' WHERE custom_user_id = %s", (max_user_id,))
+        connection.commit()
+
+    def change_admin_sql(self):
+        connection = mysql.connector.connect(
+            host="localhost",
+            port=3306,
+            user="root",
+            password="test1234",
+            database="webshop"
+        )
+        cursor = connection.cursor()
+        cursor.execute("UPDATE user_role SET roles = 'ROLE_ADMIN' WHERE custom_user_id = 4", (max_user_id,))
         connection.commit()
 
     def user_role_sql(self):
