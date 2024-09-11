@@ -91,6 +91,7 @@ class TestProgmusix:
 
 
     def test_login_TAB(self):
+        time.sleep(1)
         self.page.login_method_TAB_n()
         # Megjelennek-e az adatbekérő üzenetek, ha üresen maradnak a mezők:
         assert self.page.negative_username_login_msg().is_displayed()
