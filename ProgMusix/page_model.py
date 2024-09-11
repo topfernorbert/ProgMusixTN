@@ -286,7 +286,14 @@ class ProgMusix(GeneralPage):
         self.password().send_keys(TESTDATA['password_p'])
         self.password_again().send_keys(TESTDATA['password_p'])
         self.register_btn().click()
-
+        
+    def reg_TAB_method(self):
+        self.menu_login_btn().click()
+        self.create_page_btn()
+        self.email().send_keys(Keys.TAB)
+        self.username().send_keys(Keys.TAB)
+        self.password().send_keys(Keys.TAB)
+        self.password_again().send_keys(Keys.TAB)
 
     def registration_invalid_name(self):
         self.registration()
@@ -298,7 +305,8 @@ class ProgMusix(GeneralPage):
         self.register_btn().click()
 
     def registration_invalid_email(self):
-        self.registration()
+        self.menu_login_btn().click()
+        self.create_page_btn()
         self.email().send_keys('invalid.invalid.hu')
         self.username().send_keys(TESTDATA['username_p'])
         self.password().send_keys(TESTDATA['password_p'])
@@ -332,15 +340,6 @@ class ProgMusix(GeneralPage):
         self.password_again().send_keys('asd')
         time.sleep(3)
         self.register_btn().click()
-
-
-    def reg_TAB_method(self):
-        self.menu_login_btn().click()
-        self.create_page_btn().click()
-        self.email().send_keys(Keys.TAB)
-        self.username().send_keys(Keys.TAB)
-        self.password().send_keys(Keys.TAB)
-        self.password_again().send_keys(Keys.TAB)
 
     def reg_negative_method(self):
         self.menu_login_btn().click()
