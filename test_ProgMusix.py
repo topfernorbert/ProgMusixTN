@@ -40,15 +40,17 @@ class TestProgmusix:
         assert self.page.activate_link().is_displayed()
         self.page.activate_link().click()
 
-    #@pytest.mark.order(3)
+    @pytest.mark.order(3)
     def test_login_positive(self):
         self.page.login_method_p()
         # A belépéshez szükséges gomb engedélyezve van-e:
         assert self.page.login_btn().is_enabled()
-
+        
+    @pytest.mark.order(4)
     def test_change_admin(self):
         self.page.change_admin_sql()
 
+    @pytest.mark.order(5)
     def test_reg_TAB(self):
         self.page.reg_TAB_method()
         assert self.page.invalid_email_msg() == TESTDATA['TAB_email']
@@ -61,6 +63,7 @@ class TestProgmusix:
         assert self.page.enter_password_again().is_displayed()
         assert self.page.disabled_submit_btn() == 'true'
 
+    @pytest.mark.order(6)
     def test_reg_negative(self):
         self.page.reg_negative_method()
         # Helytelen formátumra való felszólító üzenetek megjelenése:
@@ -71,46 +74,50 @@ class TestProgmusix:
         assert self.page.dif_password_againg_msg().text == TESTDATA['negative_password_again_msg']
 
 #Csak a username kitöltése helytelen:
+    @pytest.mark.order(7)
     def test_reg_invalid_username(self):
         self.page.registration_invalid_name()
         assert not self.page.register_btn().is_enabled()
 
+    
 #Csak az email cím formátuma helytelen:
-
+    @pytest.mark.order(8)
     def test_reg_invalid_email(self):
         self.page.registration_invalid_email()
         assert not self.page.register_btn().is_enabled()
 
 #Csak a jelszó formátuma helytelen:
-
+    @pytest.mark.order(9)
     def test_reg_invalid_password(self):
         self.page.registration_invalid_password()
         assert not self.page.register_btn().is_enabled()
 
 #Eltérő jelszómegerősítés:
-
+    @pytest.mark.order(10)
     def test_reg_dif_password(self):
         self.page.registration_dif_password()
         assert not self.page.register_btn().is_enabled()
 
 #81 karakteres email cím:
-
+    @pytest.mark.order(11)
     def test_long_email(self):
         self.page.registration_long_email()
         assert not self.page.register_btn().is_enabled()
 
-
+    @pytest.mark.order(12)
     def test_login_TAB(self):
         self.page.login_method_TAB_n()
         # Megjelennek-e az adatbekérő üzenetek, ha üresen maradnak a mezők:
         assert self.page.negative_username_login_msg().is_displayed()
         assert self.page.negative_password_login_msg().is_displayed()
 
+    @pytest.mark.order(13)
     def test_login_negative(self):
         self.page.login_method_n()
         # Rossz email cím/jelszó megjelenése:
         assert self.page.negative_login_msg() == TESTDATA['negative_login_msg']
 
+    @pytest.mark.order(14)
     def test_contact(self):
         self.page.contact_btn().click()
         self.page.map_icon().click()
@@ -125,7 +132,7 @@ class TestProgmusix:
         assert all(field in self.page.last_msg_sql()[0] for field in
                    [TESTDATA['contact_name'], TESTDATA['contact_email'], TESTDATA['contact_field']])
 
-    @pytest.mark.order(-1)
+    @pytest.mark.order(15)
     def test_paying(self):
         #Login
         self.page.login_method_p()
