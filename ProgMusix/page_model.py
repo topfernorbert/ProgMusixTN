@@ -288,6 +288,7 @@ class ProgMusix(GeneralPage):
         self.register_btn().click()
         
     def reg_TAB_method(self):
+        sime.sleep(2)
         self.menu_login_btn().click()
         self.create_page_btn()
         self.email().send_keys(Keys.TAB)
