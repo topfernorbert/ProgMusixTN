@@ -274,7 +274,7 @@ class ProgMusix(GeneralPage):
             database="webshop"
         )
         cursor = connection.cursor()
-        cursor.execute("select * from user_role inner join custom_user")
+        cursor.execute("SELECT * FROM user_role INNER JOIN custom_user ON user_role.custom_user_id = custom_user.id")
         return cursor.fetchall()
 
     def registration_method(self):
