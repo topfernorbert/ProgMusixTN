@@ -262,7 +262,7 @@ class ProgMusix(GeneralPage):
             database="webshop"
         )
         cursor = connection.cursor()
-        cursor.execute("SELECT * FROM user_role ORDER BY custom_user_id DESC LIMIT 1")
+        cursor.execute("select * from user_role inner join custom_user;")
         return cursor.fetchone()
 
     def registration_method(self):
