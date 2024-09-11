@@ -10,5 +10,6 @@ class TestProgmusix:
         page.open()
 
     def test_paying(self):
-        # self.page.purchase_random_method()
+        self.page.login_method_p()
+        self.page.purchase_random_method()
         self.page.paying_method()
