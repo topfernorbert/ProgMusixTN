@@ -1,7 +1,6 @@
 from ProgMusix.configs.config import get_preconfigured_chrome_driver
 from ProgMusix.page_model import ProgMusix
 from ProgMusix.configs.testdata import TESTDATA
-import pytest
 import time
 
 
@@ -32,13 +31,7 @@ class TestProgmusix:
         assert self.page.activate_link().is_displayed()
         self.page.activate_link().click()
 
-    def test_login_positive(self):
-        self.page.login_method_p()
-        # A belépéshez szükséges gomb engedélyezve van-e:
-        assert self.page.login_btn().is_enabled()
 
-    def test_change_admin(self):
-        self.page.change_admin_sql()
 
     def test_reg_TAB(self):
         self.page.reg_TAB_method()

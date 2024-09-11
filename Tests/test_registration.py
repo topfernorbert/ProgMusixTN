@@ -17,3 +17,9 @@ class TestProgmusix:
         assert self.page.succesfull_msg() == TESTDATA['succesful_msg']
         assert TESTDATA['email_p'] and TESTDATA['username_p'] in self.page.last_user_sql()
         time.sleep(5)
+
+    def test_reg_email(self):
+        # Annak ellenőrzése, hogy megérkezik a visszaigazoló e-mail és tartalmazza a kattintható aktiváló linket
+        self.page.reg_email()
+        assert self.page.activate_link().is_displayed()
+        self.page.activate_link().click()
