@@ -17,7 +17,7 @@ class ProgMusix(GeneralPage):
 
     # Menu buttons:
     def menu_login_btn(self):
-        return self.browser.find_element(By.XPATH, '//button[@id="regLogin"]')
+        return self.browser.find_element(By.XPATH, '//button[@id="regLogin"]').click()
 
     def menu_logout(self):
         return self.browser.find_element(By.XPATH, '//button[@id="button_logOut"]')
@@ -275,7 +275,7 @@ class ProgMusix(GeneralPage):
 
     def registration(self):
         time.sleep(1)
-        self.menu_login_btn().click()
+        self.menu_login_btn()
         self.create_page_btn()
     #self.registration_refresh()
 
@@ -289,7 +289,7 @@ class ProgMusix(GeneralPage):
         
     def reg_TAB_method(self):
         time.sleep(2)
-        self.menu_login_btn().click()
+        self.menu_login_btn()
         self.create_page_btn()
         self.email().send_keys(Keys.TAB)
         self.username().send_keys(Keys.TAB)
@@ -315,7 +315,7 @@ class ProgMusix(GeneralPage):
         self.register_btn().click()
 
     def registration_invalid_password(self):
-        self.menu_login_btn().click()
+        self.menu_login_btn()
         self.create_page_btn()
         self.email().send_keys(TESTDATA['email_p'])
         self.username().send_keys(TESTDATA['username_p'])
@@ -325,7 +325,7 @@ class ProgMusix(GeneralPage):
         self.register_btn().click()
 
     def registration_dif_password(self):
-        self.menu_login_btn().click()
+        self.menu_login_btn()
         self.create_page_btn()
         self.email().send_keys(TESTDATA['email_p'])
         self.username().send_keys(TESTDATA['username_p'])
@@ -335,7 +335,7 @@ class ProgMusix(GeneralPage):
         self.register_btn().click()
 
     def registration_long_email(self):
-        self.menu_login_btn().click()
+        self.menu_login_btn()
         self.create_page_btn()
         self.email().send_keys('nagyon-hosszu-felhasznalonev-ami-majdnem-elferi-de-meg-kell-hozza@endtest-mail.io')
         self.username().send_keys(TESTDATA['username_p'])
@@ -345,7 +345,7 @@ class ProgMusix(GeneralPage):
         self.register_btn().click()
 
     def reg_negative_method(self):
-        self.menu_login_btn().click()
+        self.menu_login_btn()
         self.create_page_btn()
         self.email().send_keys(TESTDATA['negative_email'])
         self.username().send_keys(TESTDATA['negative_username'])
@@ -355,19 +355,19 @@ class ProgMusix(GeneralPage):
 
     def login_method_p(self):
         time.sleep(1)
-        self.menu_login_btn().click()
+        self.menu_login_btn()
         self.username_login().send_keys(TESTDATA['username_p'])
         self.password_login().send_keys(TESTDATA['password_p'])
         self.login_btn().click()
 
 
     def login_method_TAB_n(self):
-        self.menu_login_btn().click()
+        self.menu_login_btn()
         self.username_login().send_keys(Keys.TAB)
         self.password_login().send_keys(Keys.TAB)
 
     def login_method_n(self):
-        self.menu_login_btn().click()
+        self.menu_login_btn()
         self.username_login().send_keys(TESTDATA['negative_login_username'])
         self.password_login().send_keys(TESTDATA['negative_login_password'])
         self.login_btn().click()
