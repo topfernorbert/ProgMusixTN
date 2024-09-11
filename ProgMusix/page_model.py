@@ -262,7 +262,7 @@ class ProgMusix(GeneralPage):
             database="webshop"
         )
         cursor = connection.cursor()
-        cursor.execute("UPDATE user_role SET roles = 'ROLE_ADMIN' WHERE custom_user_id = 4", (max_user_id,))
+        cursor.execute("UPDATE user_role SET roles = 'ROLE_ADMIN' WHERE custom_user_id = 4")
         connection.commit()
 
     def user_role_sql(self):
@@ -274,7 +274,7 @@ class ProgMusix(GeneralPage):
             database="webshop"
         )
         cursor = connection.cursor()
-        cursor.execute("select * from user_role inner join custom_user;")
+        cursor.execute("select * from user_role inner join custom_user")
         return cursor.fetchone()
 
     def registration_method(self):
