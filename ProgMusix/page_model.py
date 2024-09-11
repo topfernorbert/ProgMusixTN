@@ -275,7 +275,7 @@ class ProgMusix(GeneralPage):
         )
         cursor = connection.cursor()
         cursor.execute("select * from user_role inner join custom_user")
-        return cursor.fetchone()
+        return cursor.fetchall()
 
     def registration_method(self):
         self.browser.get('http://localhost:4200/registration')
