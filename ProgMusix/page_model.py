@@ -351,7 +351,6 @@ class ProgMusix(GeneralPage):
 
     def login_method_p(self):
         self.menu_login_btn().click()
-        time.sleep(2)
         self.username_login().send_keys(TESTDATA['username_p'])
         self.password_login().send_keys(TESTDATA['password_p'])
         self.login_btn().click()
