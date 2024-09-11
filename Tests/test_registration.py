@@ -1,6 +1,6 @@
-from ProgMusix.configs.config import get_preconfigured_chrome_driver
-from ProgMusix.page_model import ProgMusix
-from ProgMusix.configs.testdata import TESTDATA
+from ProgMusixTN.ProgMusix.configs.config import get_preconfigured_chrome_driver
+from ProgMusixTN.ProgMusix.page_model import ProgMusix
+from ProgMusixTN.ProgMusix.configs.testdata import TESTDATA
 import time
 
 class TestProgmusix:
