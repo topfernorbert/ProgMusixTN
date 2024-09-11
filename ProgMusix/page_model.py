@@ -662,3 +662,13 @@ class ProgMusix(GeneralPage):
 
     def create_page_btn_try(self):
         return self.wait_for_element_to_be_clickable('create_account')
+
+    def registration_refres(self, max_attempts=3):
+        attempts = 0
+        while attempts < max_attempts:
+            try:
+                self.create_page_btn().click()
+                return True
+            except ElementClickInterceptedException:
+                attempts += 1
+                self.browser.refresh()
