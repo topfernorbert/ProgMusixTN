@@ -26,7 +26,8 @@ class ProgMusix(GeneralPage):
         return self.browser.find_element(By.ID, 'profile')
 
     def menu_cart(self):
-        return self.browser.find_element(By.ID, 'button_myCart')
+        return WebDriverWait(self.browser,10).until(
+    EC.visibility_of_element_located((By.ID, 'button_myCart')))
 
     def menu_location(self):
         return self.browser.find_element(By.ID, 'button_location')
@@ -432,7 +433,6 @@ class ProgMusix(GeneralPage):
     def purchase_random_method(self):
         self.menu_search().click()
         random_counter = randint(1, 22)
-        time.sleep(2)
         buttons = self.product_all_add_btn()
         for i in range(min(random_counter, len(buttons))):
             buttons[i].click()
