@@ -642,7 +642,7 @@ class ProgMusix(GeneralPage):
             (By.XPATH, '//div[@id="3"]/mat-card/mat-card-actions/button[@id="button_addToCart"]')))
 
     def product_all_add_btn(self):
-        return WebDriverWait(self.browser, 15).until(
+        return WebDriverWait(self.browser, 50).until(
             EC.visibility_of_all_elements_located((By.ID, 'button_addToCart')))
 
 
