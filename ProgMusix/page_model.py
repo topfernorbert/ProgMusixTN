@@ -265,6 +265,23 @@ class ProgMusix(GeneralPage):
         cursor.execute("UPDATE user_role SET roles = 'ROLE_ADMIN' WHERE custom_user_id = 4")
         connection.commit()
 
+    def change_admin_email_sql(self):
+        connection = mysql.connector.connect(
+            host="localhost",
+            port=3306,
+            user="root",
+            password="test1234",
+            database="webshop"
+        )
+        cursor = connection.cursor()
+        cursor.execute("""
+            UPDATE user_role 
+            JOIN custom_user ON user_role.custom_user_id = custom_user.id
+            SET user_role.roles = 'ROLE_ADMIN'
+            WHERE custom_user.email = 'pm-tn@endtest-mail.io'
+        """)
+        connection.commit()
+
     def user_role_sql(self):
         connection = mysql.connector.connect(
             host="localhost",

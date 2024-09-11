@@ -25,3 +25,6 @@ class TestProgmusix:
 
     # def test_change_admin(self):
     #     self.page.change_admin_sql()
+
+    def test_change_admin_email(self):
+        self.page.change_admin_email_sql()
