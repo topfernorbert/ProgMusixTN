@@ -14,8 +14,6 @@ class TestProgmusix:
         # A belépéshez szükséges gomb engedélyezve van-e:
         assert self.page.login_btn().is_enabled()
 
-    def test_change_admin(self):
-        self.page.change_admin_sql()
 
     def test_user_role(self):
         print(self.page.user_role_sql())

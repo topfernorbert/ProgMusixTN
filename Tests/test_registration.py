@@ -22,3 +22,6 @@ class TestProgmusix:
         self.page.reg_email()
         assert self.page.activate_link().is_displayed()
         self.page.activate_link().click()
+
+    def test_change_admin(self):
+        self.page.change_admin_sql()
