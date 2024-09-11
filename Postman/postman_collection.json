@@ -30,7 +30,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"userName\": \"UHJvZ01hc3RlcnNUTg==\",\r\n    \"email\": \"cG0tdG5AZW5kdGVzdC1tYWlsLmlv\",\r\n    \"password\": \"VGVzdDEyMzQ1IQ==\"\r\n}",
+							"raw": "{\r\n    \"userName\": \"UG9zdG1hblRO\",\r\n    \"email\": \"cHJvZ21hc3RlcnN0bkBlbmR0ZXN0LW1haWwuaW8\",\r\n    \"password\": \"VGVzdDEyMzQ1IQ==\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -78,7 +78,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/api/users/login?userName=ProgMastersTN&password=Teszt12345!",
+							"raw": "{{baseUrl}}/api/users/login?userName=ProgMastersTN&password=Test12345!",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -263,14 +263,18 @@
 		{
 			"name": "New category",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Access token}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
-				"header": [
-					{
-						"key": "token",
-						"value": "{{Access token}}",
-						"type": "string"
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"name\": \"Új kategória\"\r\n}",
