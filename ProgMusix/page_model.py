@@ -17,28 +17,28 @@ class ProgMusix(GeneralPage):
 
     # Menu buttons:
     def menu_login_btn(self):
-        return self.browser.find_element(By.XPATH, '//button[@id="regLogin"]').click()
+        return self.browser.find_element(By.ID, 'regLogin').click()
 
     def menu_logout(self):
-        return self.browser.find_element(By.XPATH, '//button[@id="button_logOut"]')
+        return self.browser.find_element(By.ID, 'button_logOut')
 
     def menu_profile(self):
-        return self.browser.find_element(By.XPATH, '//button[@id="profile"]')
+        return self.browser.find_element(By.ID, 'profile')
 
     def menu_cart(self):
-        return self.browser.find_element(By.XPATH, '//button[@id="button_myCart"]')
+        return self.browser.find_element(By.ID, 'button_myCart')
 
     def menu_location(self):
-        return self.browser.find_element(By.XPATH, '//button[@id="button_location"]')
+        return self.browser.find_element(By.ID, 'button_location')
 
     def menu_search(self):
-        return self.browser.find_element(By.XPATH, '//button[@id="button_search"]')
+        return self.browser.find_element(By.ID, 'button_search')
 
     def filter_on(self):
-        return self.browser.find_element(By.XPATH, '//div[@id="filter-on"]')
+        return self.browser.find_element(By.ID, 'filter-on')
 
     def filter_off(self):
-        return self.browser.find_element(By.XPATH, '//div[@id="filter-off"]')
+        return self.browser.find_element(By.ID, 'filter-off')
 
     # Login/Registration page
     def btn_signin(self):
