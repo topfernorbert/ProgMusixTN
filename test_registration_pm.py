@@ -2,6 +2,7 @@ from ProgMusix.configs.config import get_preconfigured_chrome_driver
 from ProgMusix.page_model import ProgMusix
 from ProgMusix.configs.testdata import TESTDATA
 import pytest
+import time
 
 class TestProgmusix:
     def setup_method(self):
