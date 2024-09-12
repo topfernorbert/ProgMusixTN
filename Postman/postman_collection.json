@@ -378,8 +378,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"pm.test(\"Status code is 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Response time is less than 200ms\", function () {\r",
@@ -472,8 +472,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"pm.test(\"Status code is 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Response time is less than 200ms\", function () {\r",
@@ -754,7 +754,7 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "postman-cloud:///1ef7103b-8467-4300-9861-701dcca4a76d"
+									"src": []
 								},
 								{
 									"key": "categoryIdList",
@@ -832,7 +832,7 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "postman-cloud:///1ef69530-8123-4df0-a7cc-800b44b633ac"
+									"src": []
 								},
 								{
 									"key": "categoryIdList",
@@ -969,7 +969,7 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "postman-cloud:///1ef69530-8123-4df0-a7cc-800b44b633ac"
+									"src": []
 								},
 								{
 									"key": "categoryIdList",
@@ -1611,8 +1611,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 201\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"pm.test(\"Status code is 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Response time is less than 1000ms\", function () {\r",
@@ -1666,8 +1666,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"pm.test(\"Status code is 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Response time is less than 1000ms\", function () {\r",
@@ -1721,8 +1721,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"pm.test(\"Status code is 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Response time is less than 1000ms\", function () {\r",
