@@ -139,8 +139,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -235,7 +235,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"userName\": \"RG9iaWth\",\r\n    \"email\": \"UHJvZ01hc3RlcnNjdXN0b21lckBlbmR0ZXN0LW1haWwuaW8=\",\r\n    \"password\": \"RG9iaWthMTIzNCE=\"\r\n}",
+							"raw": "{\r\n    \"userName\": \"RG9iaWth\",\r\n    \"email\": \"cHJvZ21hc3RlcnN0bkBlbmR0ZXN0LW1haWwuaW8=\",\r\n    \"password\": \"RG9iaWthMTIzNCE=\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -378,8 +378,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Response time is less than 200ms\", function () {\r",
@@ -425,8 +425,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Response time is less than 200ms\", function () {\r",
@@ -472,8 +472,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Response time is less than 200ms\", function () {\r",
@@ -647,14 +647,14 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 400\", function () {\r",
+									"pm.test(\"Status code is 201\", function () {\r",
 									"pm.test(\"Successful POST request\", function () {\r",
-									"    pm.expect(pm.response.code).to.be.oneOf([400,401]);\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201]);\r",
 									"});\r",
-									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.have.status(201);\r",
 									"});\r",
-									"pm.test(\"Response time is less than 3000ms\", function () {\r",
-									"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"pm.test(\"Response time is less than 1000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -712,7 +712,7 @@
 									"    pm.response.to.have.status(201);\r",
 									"});\r",
 									"pm.test(\"Response time is less than 6000ms\", function () {\r",
-									"    pm.expect(pm.response.responseTime).to.be.below(6000);\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -842,9 +842,9 @@
 							]
 						},
 						"url": {
-							"raw": "{{base_url}}/api/products/26",
+							"raw": "{{baseUrl}}/api/products/26",
 							"host": [
-								"{{base_url}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
@@ -900,9 +900,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/api/categories/",
+							"raw": "{{baseUrl}}/api/categories/",
 							"host": [
-								"{{base_url}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
@@ -979,9 +979,9 @@
 							]
 						},
 						"url": {
-							"raw": "{{base_url}}/api/products",
+							"raw": "{{baseUrl}}/api/products",
 							"host": [
-								"{{base_url}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
@@ -1034,9 +1034,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/api/ratings/27",
+							"raw": "{{baseUrl}}/api/ratings/27",
 							"host": [
-								"{{base_url}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
@@ -1102,9 +1102,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseurl}}/api/products/1002",
+							"raw": "{{baseUrl}}/api/products/1002",
 							"host": [
-								"{{baseurl}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
@@ -1170,9 +1170,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/api/products/27",
+							"raw": "{{baseUrl}}/api/products/27",
 							"host": [
-								"{{base_url}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
@@ -1218,9 +1218,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/api/categories",
+							"raw": "{{baseUrl}}/api/categories",
 							"host": [
-								"{{base_url}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
@@ -1253,12 +1253,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/products",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/api/products",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"products"
@@ -1290,12 +1288,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/products/1",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/api/products/1",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"products",
@@ -1328,12 +1324,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/categories/1",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/api/categories/1",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"categories",
@@ -1366,12 +1360,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/categories/20000000000000000000",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/api/categories/20000000000000000000",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"categories",
@@ -1404,12 +1396,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/products/10000000000000",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/api/products/10000000000000",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"products",
@@ -1442,12 +1432,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/ratings/1",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/api/ratings/1",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"ratings",
@@ -1480,9 +1468,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/api/ratings/100000000000",
+							"raw": "{{baseUrl}}/api/ratings/100000000000",
 							"host": [
-								"{{base_url}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
@@ -1545,12 +1533,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/purchases",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/api/purchases",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"purchases"
@@ -1606,12 +1592,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/purchases",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/api/purchases",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"purchases"
@@ -1663,12 +1647,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/purchases",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/api/purchases",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"purchases"
@@ -1720,12 +1702,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/purchases",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/api/purchases",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"purchases"
@@ -1777,9 +1757,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseurl}}/api/purchases",
+							"raw": "{{baseUrl}}/api/purchases",
 							"host": [
-								"{{baseurl}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
@@ -1839,12 +1819,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/purchases/me",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/api/purchases/me",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"purchases",
@@ -1901,12 +1879,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/purchases",
-							"protocol": "http",
+							"raw": "{{baseUrl}}/api/purchases",
 							"host": [
-								"localhost"
+								"{{baseUrl}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"purchases"
