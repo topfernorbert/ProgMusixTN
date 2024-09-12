@@ -106,7 +106,7 @@ jobs:
 
     - name: Convert Newman report to Allure format
       run: |
-        allure generate Postman/reports/report.json -o allure-results/postman
+        allure generate Postman/reports/report.json -o allure-results/postman || true 
 
 
     - name: Allure Report action from marketplace
