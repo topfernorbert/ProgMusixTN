@@ -94,22 +94,20 @@ jobs:
         && pytest Tests/test_ProgMusix.py --alluredir=allure-results \
         && pytest Postman/test_Postman/tests_Postman.py --alluredir=allure-results || true
         
-    - name: Install Newman and allure-newman
-      run: npm install -g newman allure-newman
+    - name: Install Newman
+      run: npm install -g newman
 
-#    - name: Run Postman collection with Newman
-#      run: |
-#        newman run Postman/postman_collection.json \
-#        --environment Postman/postman_environment.json \
-#        --reporters cli,json \
-#        --reporter-json-export Postman/reports/report.json
-
-    - name: Run Postman collection with Newman and generate Allure report
+    - name: Run Postman collection with Newman
       run: |
         newman run Postman/postman_collection.json \
         --environment Postman/postman_environment.json \
-        --reporters cli,allure \
-        --reporter-allure-export allure-results/postman
+        --reporters cli,json \
+        --reporter-json-export Postman/reports/report.json
+
+    - name: Convert Newman report to Allure format
+      run: |
+        allure generate Postman/reports/report.json -o allure-results/postman
+
 
     - name: Allure Report action from marketplace
       if: always()
