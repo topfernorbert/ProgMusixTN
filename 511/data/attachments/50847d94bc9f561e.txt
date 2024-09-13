@@ -1,0 +1,1 @@
+{"generalMessage":null,"fieldErrors":[{"field":"name","message":"This category name is already taken"}]}
