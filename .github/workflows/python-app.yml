@@ -108,7 +108,8 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y allure
-        echo 'export PATH=$PATH:/usr/share/allure' >> $GITHUB_ENV
+        echo '/usr/share/allure/bin' | sudo tee -a /etc/environment
+        source /etc/environment
 
 
     - name: Convert Newman report to Allure format
