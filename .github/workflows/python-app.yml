@@ -117,10 +117,11 @@ jobs:
       run: |
         newman run Postman/postman_collection.json \
         --environment Postman/postman_environment.json \
-        --reporters cli,json \
-        --reporter-json-export Postman/reports/report.json
-        --reporter-allure-export allure-results
+        --reporters cli,allure \
+        --reporter-allure-export allure-results || true
 
+    - name: List Allure results directory
+      run: ls -la allure-results
 
 
     - name: Allure Report action from marketplace
