@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import requests
+import json
 
 URL = 'http://hotel-v3.progmasters.hu/'
 options = Options()
@@ -19,6 +20,22 @@ def test_postman_1():
     headers = {}
     response = requests.request("GET", url, headers=headers, data=payload)
     assert response.text == '[{"id":1,"name":"WOODWIND"},{"id":2,"name":"BRASS INSTRUMENTS"},{"id":3,"name":"PERCUSSION INSTRUMENTS"},{"id":4,"name":"KEYBOARD INSTRUMENTS"},{"id":5,"name":"GUITAR FAMILY"},{"id":6,"name":"BOWED STRINGS"},{"id":7,"name":"MISC"},{"id":14,"name":"TRADITIONAL"}]'
+
+
+def test_postman_reg():
+    url = "http://localhost:8080/api/users"
+
+    payload = json.dumps({
+        "userName": "UG9zdG1hblRO",
+        "email": "cHJvZ21hc3RlcnN0bkBlbmR0ZXN0LW1haWwuaW8",
+        "password": "VGVzdDEyMzQ1IQ=="
+    })
+    headers = {
+        'Content-Type': 'application/json'
+    }
+    response = requests.request("POST", url, headers=headers, data=payload)
+    print(response.text)
+
 
 def test_postman_user():
     browser.get('https://app.endtest.io/mailbox?email=progmasterstn@endtest-mail.io')
