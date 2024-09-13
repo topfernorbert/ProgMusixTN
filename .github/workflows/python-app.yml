@@ -94,8 +94,15 @@ jobs:
     #     && pytest Tests/test_ProgMusix.py --alluredir=allure-results \
     #     && pytest Tests/test_purchase.py --alluredir=allure-results || true
         
-    - name: Install Newman
-      run: npm install -g newman
+    # - name: Install Newman
+    #   run: npm install -g newman
+
+    - name: Install Node.js and Newman
+      run: |
+        curl -fsSL https://deb.nodesource.com/setup_20.17.0 | sudo -E bash -
+        sudo apt-get install -y nodejs
+        npm install -g newman-reporter-allure
+        #npm install -g newman newman-reporter-htmlextra
 
     - name: Run Postman collection with Newman
       run: |
@@ -103,18 +110,6 @@ jobs:
         --environment Postman/postman_environment.json \
         --reporters cli,json \
         --reporter-json-export Postman/reports/report.json || true 
-
-    - name: Install Allure CLI
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y allure
-        echo '/usr/share/allure/bin' | sudo tee -a /etc/environment
-        source /etc/environment
-
-
-    - name: Convert Newman report to Allure format
-      run: |
-        allure generate Postman/reports/report.json -o allure-results/postman || true 
 
 
     - name: Allure Report action from marketplace
