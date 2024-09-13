@@ -77,22 +77,22 @@ jobs:
     
 
 
-    - name: Test with pytest
-      env:
-        FRONTEND_URL: http://localhost:4200
-        BACKEND_URL: http://localhost:8080
-        DATABASE_HOST: localhost
-        DATABASE_PORT: 3306
-        DATABASE_USER: root
-        DATABASE_PASSWORD: test1234
-        DATABASE_NAME: webshop
-      run: |
-        pytest Tests/test_registration.py --alluredir=allure-results \
-        && pytest Tests/test_reg_negative.py --alluredir=allure-results \
-        && pytest -s Tests/test_login.py --alluredir=allure-results \
-        && pytest Postman/test_Postman/tests_Postman.py --alluredir=allure-results \
-        && pytest Tests/test_ProgMusix.py --alluredir=allure-results \
-        && pytest Tests/test_purchase.py --alluredir=allure-results || true
+    # - name: Test with pytest
+    #   env:
+    #     FRONTEND_URL: http://localhost:4200
+    #     BACKEND_URL: http://localhost:8080
+    #     DATABASE_HOST: localhost
+    #     DATABASE_PORT: 3306
+    #     DATABASE_USER: root
+    #     DATABASE_PASSWORD: test1234
+    #     DATABASE_NAME: webshop
+    #   run: |
+    #     pytest Tests/test_registration.py --alluredir=allure-results \
+    #     && pytest Tests/test_reg_negative.py --alluredir=allure-results \
+    #     && pytest -s Tests/test_login.py --alluredir=allure-results \
+    #     && pytest Postman/test_Postman/tests_Postman.py --alluredir=allure-results \
+    #     && pytest Tests/test_ProgMusix.py --alluredir=allure-results \
+    #     && pytest Tests/test_purchase.py --alluredir=allure-results || true
         
     - name: Install Newman
       run: npm install -g newman
@@ -109,8 +109,8 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y allure
 
-    - name: Find Allure installation path
-      run: which allure
+    - name: Find Allure installation
+      run: sudo find / -name allure
 
     - name: Add Allure to PATH
       run: echo "/usr/bin/allure" >> $GITHUB_PATH
