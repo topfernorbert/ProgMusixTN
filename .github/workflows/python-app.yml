@@ -123,6 +123,9 @@ jobs:
     - name: List Allure results directory
       run: ls -la allure-results
 
+    - name: generate
+      run: npx allure serve allure-results
+
 
     - name: Allure Report action from marketplace
       if: always()
