@@ -97,6 +97,12 @@ jobs:
     # - name: Install Newman
     #   run: npm install -g newman
 
+    - name: Print working directory
+      run: pwd
+
+    - name: List files in the working directory
+      run: ls -la
+
     - name: Create Postman reports directory
       run: mkdir -p Postman/reports
 
