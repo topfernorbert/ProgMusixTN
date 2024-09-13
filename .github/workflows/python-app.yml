@@ -97,6 +97,9 @@ jobs:
     # - name: Install Newman
     #   run: npm install -g newman
 
+    - name: Create Postman reports directory
+      run: mkdir -p Postman/reports
+
     - name: Install Node.js and Newman
       run: |
         curl -fsSL https://deb.nodesource.com/setup_20.17.0 | sudo -E bash -
