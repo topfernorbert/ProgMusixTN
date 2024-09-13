@@ -109,6 +109,13 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y allure
 
+    - name: Find Allure installation path
+      run: which allure
+
+    - name: Add Allure to PATH
+      run: echo "/usr/bin/allure" >> $GITHUB_PATH
+
+
     - name: Convert Newman report to Allure format
       run: |
         allure generate Postman/reports/report.json -o allure-results/postman || true 
