@@ -77,31 +77,24 @@ jobs:
     
 
 
-    # - name: Test with pytest
-    #   env:
-    #     FRONTEND_URL: http://localhost:4200
-    #     BACKEND_URL: http://localhost:8080
-    #     DATABASE_HOST: localhost
-    #     DATABASE_PORT: 3306
-    #     DATABASE_USER: root
-    #     DATABASE_PASSWORD: test1234
-    #     DATABASE_NAME: webshop
-    #   run: |
-    #     pytest Tests/test_registration.py --alluredir=allure-results \
-    #     && pytest Tests/test_reg_negative.py --alluredir=allure-results \
-    #     && pytest -s Tests/test_login.py --alluredir=allure-results \
-    #     && pytest Postman/test_Postman/tests_Postman.py --alluredir=allure-results \
-    #     && pytest Tests/test_ProgMusix.py --alluredir=allure-results \
-    #     && pytest Tests/test_purchase.py --alluredir=allure-results || true
-        
-    # - name: Install Newman
-    #   run: npm install -g newman
+    - name: Test with pytest
+      env:
+        FRONTEND_URL: http://localhost:4200
+        BACKEND_URL: http://localhost:8080
+        DATABASE_HOST: localhost
+        DATABASE_PORT: 3306
+        DATABASE_USER: root
+        DATABASE_PASSWORD: test1234
+        DATABASE_NAME: webshop
+      run: |
+        pytest Tests/test_registration.py --alluredir=allure-results \
+        && pytest Tests/test_reg_negative.py --alluredir=allure-results \
+        && pytest -s Tests/test_login.py --alluredir=allure-results \
+        && pytest Postman/test_Postman/tests_Postman.py --alluredir=allure-results \
+        && pytest Tests/test_ProgMusix.py --alluredir=allure-results \
+        && pytest Tests/test_purchase.py --alluredir=allure-results || true
+    
 
-    - name: Print working directory
-      run: pwd
-
-    - name: List files in the working directory
-      run: ls -la
 
     - name: Create Postman reports directory
       run: mkdir -p Postman/reports
@@ -120,11 +113,9 @@ jobs:
         --reporters cli,allure \
         --reporter-allure-export allure-results || true
 
-    - name: List Allure results directory
-      run: ls -la allure-results
 
-    - name: generate
-      run: npm allure serve allure-results
+    # - name: generate
+    #   run: npm allure serve allure-results
 
 
     - name: Allure Report action from marketplace
