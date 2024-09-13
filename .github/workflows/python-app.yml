@@ -90,9 +90,9 @@ jobs:
         pytest Tests/test_registration.py --alluredir=allure-results \
         && pytest Tests/test_reg_negative.py --alluredir=allure-results \
         && pytest -s Tests/test_login.py --alluredir=allure-results \
-        && pytest Tests/test_purchase.py --alluredir=allure-results \
+        && pytest Postman/test_Postman/tests_Postman.py --alluredir=allure-results \
         && pytest Tests/test_ProgMusix.py --alluredir=allure-results \
-        && pytest Postman/test_Postman/tests_Postman.py --alluredir=allure-results || true
+        && pytest Tests/test_purchase.py --alluredir=allure-results || true
         
     - name: Install Newman
       run: npm install -g newman
