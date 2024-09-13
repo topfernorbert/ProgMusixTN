@@ -118,7 +118,9 @@ jobs:
         newman run Postman/postman_collection.json \
         --environment Postman/postman_environment.json \
         --reporters cli,json \
-        --reporter-json-export Postman/reports/report.json || true 
+        --reporter-json-export Postman/reports/report.json
+        --reporter-allure-export allure-results
+
 
 
     - name: Allure Report action from marketplace
