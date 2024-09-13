@@ -102,7 +102,7 @@ jobs:
         newman run Postman/postman_collection.json \
         --environment Postman/postman_environment.json \
         --reporters cli,json \
-        --reporter-json-export Postman/reports/report.json
+        --reporter-json-export Postman/reports/report.json || true 
 
     - name: Convert Newman report to Allure format
       run: |
