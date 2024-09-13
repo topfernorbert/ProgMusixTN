@@ -1,0 +1,1 @@
+{"generalMessage":null,"fieldErrors":[{"field":"password","message":"The password must be more than 8 characters."},{"field":"password","message":"The password must contain at least one special character."},{"field":"password","message":"The password must contain at least one capital letter."},{"field":"password","message":"The password must contain at least one number."}]}

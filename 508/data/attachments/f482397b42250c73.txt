@@ -1,0 +1,7 @@
+pm.test("Successful POST request", function () {
+    pm.expect(pm.response.code).to.be.oneOf([200, 201]);
+});
+
+pm.test("Response time is less than 6000ms", function () {
+    pm.expect(pm.response.responseTime).to.be.below(6000);
+});

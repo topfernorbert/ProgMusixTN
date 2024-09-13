@@ -1,0 +1,24 @@
+{
+    "name": "asd",
+    "email": "asd@asd.com",
+    "phoneNumber": "012",
+    "billingName": "asd",
+    "taxNumber": "012",
+    "zipCode": "105",
+    "city": "Bu",
+    "street": "asd",
+    "shippingName": "asd",
+    "shippingZipCode": "105",
+    "shippingCity": "asd",
+    "shippingStreet": "asd.",
+    "deliveryInfo": "",
+    "payingMethod": "cash",
+    "productCartItems": [
+        {
+            "productId": 1,
+            "name": "Black Basson",
+            "price": 115000,
+            "amount": 1
+        }
+    ]
+}

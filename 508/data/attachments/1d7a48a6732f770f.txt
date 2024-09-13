@@ -1,0 +1,9 @@
+pm.test("Status code is 201", function () {
+pm.test("Successful POST request", function () {
+    pm.expect(pm.response.code).to.be.oneOf([201]);
+});
+    pm.response.to.have.status(201);
+});
+pm.test("Response time is less than 1000ms", function () {
+    pm.expect(pm.response.responseTime).to.be.below(1000);
+});

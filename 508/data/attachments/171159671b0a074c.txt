@@ -1,0 +1,5 @@
+{
+    "name": "ProgMaster",
+    "message": "Postman üzenet",
+    "email": "progmasters.prog.com"
+}

@@ -1,0 +1,24 @@
+{
+    "name": "Fehér András",
+    "email": "asd",
+    "phoneNumber": "06301112222",
+    "billingName": "Fehér András",
+    "taxNumber": "",
+    "zipCode": "1056",
+    "city": "Budapest",
+    "street": "Irányi u. 3.",
+    "shippingName": "Fehér András",
+    "shippingZipCode": "1056",
+    "shippingCity": "Budapest",
+    "shippingStreet": "Irányi u. 3.",
+    "deliveryInfo": "",
+    "payingMethod": "cash",
+    "productCartItems": [
+        {
+            "productId": 1,
+            "name": "Black Basson",
+            "price": 115000,
+            "amount": 1
+        }
+    ]
+}

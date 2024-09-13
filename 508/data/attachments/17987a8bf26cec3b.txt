@@ -1,0 +1,5 @@
+{
+    "userName": "RG9iaQ==",
+    "email": "UHJvZ01hc3RlcnNjdXN0b21lcmVuZHRlc3QtbWFpbC5pbw==",
+    "password": "RG9iaTEyMzQh"
+}

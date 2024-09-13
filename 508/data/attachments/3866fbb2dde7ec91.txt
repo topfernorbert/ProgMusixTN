@@ -1,0 +1,1 @@
+{"errorMessage":"Required request body is missing: public void hu.progmasters.webshop.controller.CustomUserController.saveUser(hu.progmasters.webshop.dto.CustomUserCreationCommand)"}

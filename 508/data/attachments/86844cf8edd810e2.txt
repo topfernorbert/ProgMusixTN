@@ -1,0 +1,28 @@
+{
+    "price": 90000,
+    "productId": 1,
+    "userId": 8,
+    "name": "Teszt123",
+    "email": "vhvadhgnjmahlkjfhy@poplk.com",
+    "phoneNumber": "06301112233",
+    "billingName": "Fehér András",
+    "taxNumber": "111222333",
+    "zipCode": "1122",
+    "city": "Budapest",
+    "street": "Irányi u. 3.",
+    "shippingName": "Teszt123",
+    "shippingZipCode": "1122",
+    "shippingCity": "Budapest",
+    "shippingStreet": "Irányi u. 3.",
+    "deliveryInfo": "Kérem a csomagot gyorsan szállítsák ki, köszönöm!",
+    "paymentMethod": "Cash",
+    "productCartItems": [
+        {
+          "productId": 1,
+          "name": "Viola made of birch",
+          "description": "string",
+          "price": 90000,
+          "amount": 1
+        }
+    ]
+}
