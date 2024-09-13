@@ -104,6 +104,11 @@ jobs:
         --reporters cli,json \
         --reporter-json-export Postman/reports/report.json || true 
 
+    - name: Install Allure CLI
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y allure
+
     - name: Convert Newman report to Allure format
       run: |
         allure generate Postman/reports/report.json -o allure-results/postman || true 
